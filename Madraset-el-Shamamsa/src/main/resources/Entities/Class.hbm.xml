@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 8, 2017 9:11:08 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entities.Class" table="CLASS" schema="dbo" catalog="Madraset-El-Shmamsa" optimistic-lock="version">
+        <id name="classId" type="long">
+            <column name="CLASS_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="lessonContent" class="Entities.LessonContent" fetch="select">
+            <column name="LESSON_CONTENT_ID" />
+        </many-to-one>
+        <property name="code" type="serializable">
+            <column name="CODE" />
+        </property>
+        <property name="startDate" type="timestamp">
+            <column name="START_DATE" length="23" />
+        </property>
+        <property name="endDate" type="timestamp">
+            <column name="END_DATE" length="23" />
+        </property>
+        <property name="place" type="serializable">
+            <column name="PLACE" />
+        </property>
+        <property name="teacherId" type="java.lang.Long">
+            <column name="TEACHER_ID" />
+        </property>
+    </class>
+</hibernate-mapping>

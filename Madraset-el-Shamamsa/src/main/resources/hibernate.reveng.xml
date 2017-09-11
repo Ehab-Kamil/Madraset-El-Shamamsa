@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="Madraset-El-Shmamsa"/>
+  <table-filter match-name="STD_STUDENT"/>
+  <table-filter match-name="LEVEL_STATUS"/>
+  <table-filter match-name="LESSON_CONTENT"/>
+  <table-filter match-name="CONTENT"/>
+  <table-filter match-name="LEVEL"/>
+  <table-filter match-name="STD_PHONE"/>
+  <table-filter match-name="LESSON"/>
+  <table-filter match-name="STUDENT_LEVEL_STATE"/>
+  <table-filter match-name="CLASS"/>
+  <table-filter match-name="TERM"/>
+</hibernate-reverse-engineering>
