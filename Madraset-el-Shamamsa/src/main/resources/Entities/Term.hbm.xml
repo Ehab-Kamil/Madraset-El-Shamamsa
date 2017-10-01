@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Sep 8, 2017 9:11:08 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Entities.Term" table="TERM" schema="dbo" catalog="Madraset-El-Shmamsa" optimistic-lock="version">
+    <class name="Entities.Term" table="TERM" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
         <id name="termId" type="long">
             <column name="TERM_ID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
-        <many-to-one name="level" class="Entities.Level" fetch="select">
+        <many-to-one name="level" class="Entities.Level" fetch="select" cascade="all">
             <column name="LEVEL_ID" />
         </many-to-one>
         <property name="code" type="string">
@@ -30,16 +30,16 @@
             <column name="CREATED_BY" length="50" />
         </property>
         <property name="lastModifiedDate" type="date">
-            <column name="LAST_MODIFIED_DATE" length="10" />
+            <column name="LAST_MODIFIED_DATE" length="10" not-null="true" />
         </property>
         <property name="lastModifiedBy" type="string">
             <column name="LAST_MODIFIED_BY" length="50" />
         </property>
-        <set name="lessons" table="LESSON" inverse="true" lazy="true" fetch="select">
+        <set name="years" table="YEAR" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="TERM_ID" />
+                <column name="TERM_ID" not-null="true" />
             </key>
-            <one-to-many class="Entities.Lesson" />
+            <one-to-many class="Entities.Year" />
         </set>
     </class>
 </hibernate-mapping>

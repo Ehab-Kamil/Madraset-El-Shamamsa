@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>anatine - a free css template</title>
+        <h:outputStylesheet name="styles.css"/>
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    </h:head>
+    <h:body >
+        <f:view>
+            <section id="body" class="width">
+                <aside id="sidebar" class="column-left" >
+
+                    <header>
+                        <h1><a href="#">مدرسة الشمامسه</a></h1>
+
+                        <h2>بكنيسة السيده العذراء مريم بحلوان</h2>
+
+                    </header>
+
+
+                    <nav   id="mainnav">
+                        <ul>
+                            <li><a href="home.xhtml">Home</a></li>
+                            <li class="selected-item"><a href="examples.xhtml">Add New Student</a></li>
+                        </ul>
+                    </nav>
+
+
+
+                </aside>
+                <section id="content" class="column-right">
+
+                    <article>
+
+
+                        <h2>Add New Student</h2>
+                        <p>&nbsp;</p>
+
+                        <blockquote><p>Before Adding New Student You have to Add the level At which this student will be, And Select it while creating the Student from the Drop down Menu</p></blockquote>
+                        <p>&nbsp;</p>
+
+
+                        <h3>Form</h3>
+                        <fieldset>
+
+                            <legend>Form legend</legend>
+                            <h:form  prependId="false">
+                                <label for="name">First Name:</label> &nbsp;
+                                <h:inputText required="true" value="#{studentBean.firstName}" id="firstNameInput" requiredMessage="you must enter a Name"/>  &nbsp; &nbsp;
+                                <h:message id="firstNamerequiredMessage" for="firstNameInput"/>
+                                <label for="name">Middle Name:</label> &nbsp;
+                                <h:inputText value="#{studentBean.middleName}" /> &nbsp; &nbsp;	
+                                <label for="name">Last Name:</label> &nbsp;
+                                <h:inputText value="#{studentBean.lastName}"/> <br /><br />	
+                                <label for="email">Email:</label> &nbsp;
+                                <h:inputText required="true" value="#{studentBean.email}" id="emailinput" validatorMessage="Email Must be like aaa@aaa.aaa" > 
+                                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" rendered="emailValidationMessage" />
+                                </h:inputText> &nbsp;&nbsp;
+                                <h:message id="emailValidationMessage" for="emailinput"/>
+                                <label for="name">Facebook Name:</label> &nbsp;
+                                <h:inputText value="#{studentBean.facebookName}"/> <br /><br />	
+
+                                <label for="name"> Birthdate :</label>&nbsp;
+                                <p:calendar value="#{studentBean.birthdate}"/> <br /><br />
+
+                                <label for="name">Father Pastor :</label>&nbsp;
+                                <h:inputText value="#{studentBean.confFather}"/> &nbsp; &nbsp;
+                                <label for="name"> Father Pastor Church :</label>&nbsp;
+                                <h:inputText value="#{studentBean.confFatherChurch}"/> <br /><br />
+
+                                <label for="name">Educational Stage :</label>&nbsp;
+                                <h:selectOneMenu value="#{studentBean.educationalStage}">
+                                    <f:selectItems value="#{studentBean.educationalStageMap}"/>
+                                </h:selectOneMenu> &nbsp; &nbsp;
+                                <label for="name"> Educational Stage Year :</label>&nbsp;
+                                <h:selectOneMenu value="#{studentBean.educationalStageYear}">
+                                    <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
+                                </h:selectOneMenu> <br /><br />
+
+
+                                <p><h:commandButton type="submit" class="formbutton" value="Add" action="#{studentBean.addStudent()}" /></p>
+                            </h:form>
+                        </fieldset>
+
+                        <c:if test="#{studentBean.students.size() > 0}" >
+                            <h3>Students</h3>
+                            <table>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>First Name</th>
+                                    <th>Middle Name</th>
+                                    <th>Last Name</th>
+                                    <th>Birthdate</th>
+                                    <th>Email</th>
+                                    <th>FaceBook Name</th>
+                                    <th>Address</th>
+                                    <th>Father Pastor</th>
+                                    <th>Educational Stage</th>
+                                    <th>Educational Stage Year</th>
+                                </tr>
+
+                                <c:forEach id="studentsTable" items="#{studentBean.students}" var="each">
+                                    <tr>
+                                        <td>#{each.code}</td>
+                                        <td>#{each.firstName}</td>
+                                        <td>#{each.middleName}</td>
+                                        <td>#{each.lastName}</td>
+                                        <td>#{each.birthdate}</td>
+                                        <td>#{each.email}</td>
+                                        <td>#{each.facebookName}</td>
+                                        <td>#{each.addStreet}#{each.addBuildingNo} #{each.addFloorNo} #{each.addFlatNo}#{each.addDesc}</td>
+                                        <td>#{each.confFather}</td>
+                                        <td>#{each.educationalStage}</td>
+                                        <td>#{each.educationalStageYear}</td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </c:if>
+
+                    </article>
+
+
+                    <footer class="clear">
+                        <p>&copy; 2015 sitename. <a href="http://zypopwebtemplates.com/">Free CSS Templates</a> by ZyPOP</p>
+                    </footer>
+
+                </section>
+
+                <div class="clear"></div>
+
+            </section>
+
+        </f:view>
+    </h:body>
+</html>

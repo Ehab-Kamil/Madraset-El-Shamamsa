@@ -1,5 +1,5 @@
 package Entities;
-// Generated Sep 8, 2017 9:11:07 PM by Hibernate Tools 4.3.1
+// Generated Sep 29, 2017 12:28:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -11,12 +11,14 @@ import java.util.Set;
 public class StdStudent implements AbstractEntity, java.io.Serializable {
 
     private long studentId;
+    private EducationalState educationalState;
+    private Year year;
     private String code;
-    private byte[] firstName;
+    private String firstName;
     private String middleName;
     private String lastName;
     private String jobTitle;
-    private byte[] birthdate;
+    private Date birthdate;
     private String email;
     private String facebookName;
     private String addStreet;
@@ -27,8 +29,6 @@ public class StdStudent implements AbstractEntity, java.io.Serializable {
     private String confFather;
     private String confFatherChurch;
     private byte[] image;
-    private String educationalStage;
-    private String educationalStageYear;
     private Boolean isMarshoum;
     private String rankAtChurch;
     private String description;
@@ -36,20 +36,20 @@ public class StdStudent implements AbstractEntity, java.io.Serializable {
     private String createdBy;
     private Date lastModificationDate;
     private String lastModifiedBy;
-    private long levelId;
-    private Set stdPhones = new HashSet(0);
-    private Set studentLevelStates = new HashSet(0);
+    private Set<StdPhone> stdPhones = new HashSet(0);
 
     public StdStudent() {
     }
 
-    public StdStudent(long studentId, long levelId) {
+    public StdStudent(long studentId, Year year) {
         this.studentId = studentId;
-        this.levelId = levelId;
+        this.year = year;
     }
 
-    public StdStudent(long studentId, String code, byte[] firstName, String middleName, String lastName, String jobTitle, byte[] birthdate, String email, String facebookName, String addStreet, String addBuildingNo, String addFloorNo, String addFlatNo, String addDesc, String confFather, String confFatherChurch, byte[] image, String educationalStage, String educationalStageYear, Boolean isMarshoum, String rankAtChurch, String description, Date creatioinDate, String createdBy, Date lastModificationDate, String lastModifiedBy, long levelId, Set stdPhones, Set studentLevelStates) {
+    public StdStudent(long studentId, EducationalState educationalState, Year year, String code, String firstName, String middleName, String lastName, String jobTitle, Date birthdate, String email, String facebookName, String addStreet, String addBuildingNo, String addFloorNo, String addFlatNo, String addDesc, String confFather, String confFatherChurch, byte[] image, Boolean isMarshoum, String rankAtChurch, String description, Date creatioinDate, String createdBy, Date lastModificationDate, String lastModifiedBy, Set stdPhones) {
         this.studentId = studentId;
+        this.educationalState = educationalState;
+        this.year = year;
         this.code = code;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -66,8 +66,6 @@ public class StdStudent implements AbstractEntity, java.io.Serializable {
         this.confFather = confFather;
         this.confFatherChurch = confFatherChurch;
         this.image = image;
-        this.educationalStage = educationalStage;
-        this.educationalStageYear = educationalStageYear;
         this.isMarshoum = isMarshoum;
         this.rankAtChurch = rankAtChurch;
         this.description = description;
@@ -75,9 +73,7 @@ public class StdStudent implements AbstractEntity, java.io.Serializable {
         this.createdBy = createdBy;
         this.lastModificationDate = lastModificationDate;
         this.lastModifiedBy = lastModifiedBy;
-        this.levelId = levelId;
         this.stdPhones = stdPhones;
-        this.studentLevelStates = studentLevelStates;
     }
 
     public long getStudentId() {
@@ -88,6 +84,22 @@ public class StdStudent implements AbstractEntity, java.io.Serializable {
         this.studentId = studentId;
     }
 
+    public EducationalState getEducationalState() {
+        return this.educationalState;
+    }
+
+    public void setEducationalState(EducationalState educationalState) {
+        this.educationalState = educationalState;
+    }
+
+    public Year getYear() {
+        return this.year;
+    }
+
+    public void setYear(Year year) {
+        this.year = year;
+    }
+
     public String getCode() {
         return this.code;
     }
@@ -96,11 +108,11 @@ public class StdStudent implements AbstractEntity, java.io.Serializable {
         this.code = code;
     }
 
-    public byte[] getFirstName() {
+    public String getFirstName() {
         return this.firstName;
     }
 
-    public void setFirstName(byte[] firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -128,11 +140,11 @@ public class StdStudent implements AbstractEntity, java.io.Serializable {
         this.jobTitle = jobTitle;
     }
 
-    public byte[] getBirthdate() {
+    public Date getBirthdate() {
         return this.birthdate;
     }
 
-    public void setBirthdate(byte[] birthdate) {
+    public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -216,22 +228,6 @@ public class StdStudent implements AbstractEntity, java.io.Serializable {
         this.image = image;
     }
 
-    public String getEducationalStage() {
-        return this.educationalStage;
-    }
-
-    public void setEducationalStage(String educationalStage) {
-        this.educationalStage = educationalStage;
-    }
-
-    public String getEducationalStageYear() {
-        return this.educationalStageYear;
-    }
-
-    public void setEducationalStageYear(String educationalStageYear) {
-        this.educationalStageYear = educationalStageYear;
-    }
-
     public Boolean getIsMarshoum() {
         return this.isMarshoum;
     }
@@ -288,28 +284,12 @@ public class StdStudent implements AbstractEntity, java.io.Serializable {
         this.lastModifiedBy = lastModifiedBy;
     }
 
-    public long getLevelId() {
-        return this.levelId;
-    }
-
-    public void setLevelId(long levelId) {
-        this.levelId = levelId;
-    }
-
-    public Set getStdPhones() {
+    public Set<StdPhone> getStdPhones() {
         return this.stdPhones;
     }
 
-    public void setStdPhones(Set stdPhones) {
+    public void setStdPhones(Set<StdPhone> stdPhones) {
         this.stdPhones = stdPhones;
-    }
-
-    public Set getStudentLevelStates() {
-        return this.studentLevelStates;
-    }
-
-    public void setStudentLevelStates(Set studentLevelStates) {
-        this.studentLevelStates = studentLevelStates;
     }
 
 }

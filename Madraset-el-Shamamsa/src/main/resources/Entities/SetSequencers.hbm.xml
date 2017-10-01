@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entities.SetSequencers" table="SET_SEQUENCERS" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+        <id name="seqId" type="long">
+            <column name="SEQ_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="code" type="string">
+            <column name="CODE" length="50" />
+        </property>
+        <property name="currentSequence" type="java.lang.Integer">
+            <column name="CURRENT_SEQUENCE" />
+        </property>
+        <property name="nextSequence" type="java.lang.Integer">
+            <column name="NEXT_SEQUENCE" />
+        </property>
+        <property name="entityType" type="java.lang.Integer">
+            <column name="ENTITY_TYPE" />
+        </property>
+    </class>
+</hibernate-mapping>

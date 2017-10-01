@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Sep 8, 2017 9:11:08 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Entities.LessonContent" table="LESSON_CONTENT" schema="dbo" catalog="Madraset-El-Shmamsa" optimistic-lock="version">
+    <class name="Entities.LessonContent" table="LESSON_CONTENT" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
         <id name="lessonContentId" type="long">
             <column name="LESSON_CONTENT_ID" />
             <generator class="assigned" />
@@ -11,12 +11,18 @@
         <many-to-one name="content" class="Entities.Content" fetch="select">
             <column name="CONTENT_ID" />
         </many-to-one>
+        <many-to-one name="educationalState" class="Entities.EducationalState" fetch="select">
+            <column name="EDUCATIONAL_STATE_ID" />
+        </many-to-one>
         <many-to-one name="lesson" class="Entities.Lesson" fetch="select">
             <column name="LESSON_ID" />
         </many-to-one>
-        <property name="lessonContentId1" type="java.lang.Long">
-            <column name="LESSON_CONTENT_ID1" />
-        </property>
+        <many-to-one name="place" class="Entities.Place" fetch="select">
+            <column name="PLACE_ID" />
+        </many-to-one>
+        <many-to-one name="teacher" class="Entities.Teacher" fetch="select">
+            <column name="TEACHER_ID" />
+        </many-to-one>
         <property name="code" type="serializable">
             <column name="CODE" />
         </property>
@@ -25,12 +31,6 @@
         </property>
         <property name="endDate" type="timestamp">
             <column name="END_DATE" length="23" />
-        </property>
-        <property name="place" type="serializable">
-            <column name="PLACE" />
-        </property>
-        <property name="teacherId" type="java.lang.Long">
-            <column name="TEACHER_ID" />
         </property>
         <property name="lastModifiedBy" type="string">
             <column name="LAST_MODIFIED_BY" length="50" />
@@ -49,6 +49,12 @@
                 <column name="LESSON_CONTENT_ID" />
             </key>
             <one-to-many class="Entities.Class" />
+        </set>
+        <set name="studentLessonAttendences" table="STUDENT_LESSON_ATTENDENCE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="LESSON_CONTENT_ID" not-null="true" />
+            </key>
+            <one-to-many class="Entities.StudentLessonAttendence" />
         </set>
     </class>
 </hibernate-mapping>

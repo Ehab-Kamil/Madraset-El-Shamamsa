@@ -1,18 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Sep 8, 2017 9:11:08 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Entities.StdStudent" table="STD_STUDENT" schema="dbo" catalog="Madraset-El-Shmamsa" optimistic-lock="version">
+    <class name="Entities.StdStudent" table="STD_STUDENT" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
         <id name="studentId" type="long">
             <column name="STUDENT_ID" />
             <generator class="assigned" />
         </id>
+        <many-to-one name="educationalState" class="Entities.EducationalState" fetch="select">
+            <column name="EDUCATIONAL_STATE_ID" />
+        </many-to-one>
+        <many-to-one name="year" class="Entities.Year" fetch="select">
+            <column name="YEAR_ID" not-null="true" />
+        </many-to-one>
         <property name="code" type="string">
             <column name="CODE" length="50" />
         </property>
-        <property name="firstName" type="binary">
-            <column name="FIRST_NAME" />
+        <property name="firstName" type="string">
+            <column name="FIRST_NAME" length="50" />
         </property>
         <property name="middleName" type="string">
             <column name="MIDDLE_NAME" length="50" />
@@ -23,8 +29,8 @@
         <property name="jobTitle" type="string">
             <column name="JOB_TITLE" length="50" />
         </property>
-        <property name="birthdate" type="binary">
-            <column name="BIRTHDATE" />
+        <property name="birthdate" type="timestamp">
+            <column name="BIRTHDATE" length="23" />
         </property>
         <property name="email" type="string">
             <column name="EMAIL" length="50" />
@@ -56,12 +62,6 @@
         <property name="image" type="binary">
             <column name="IMAGE" />
         </property>
-        <property name="educationalStage" type="string">
-            <column name="EDUCATIONAL_STAGE" length="50" />
-        </property>
-        <property name="educationalStageYear" type="string">
-            <column name="EDUCATIONAL_STAGE_YEAR" length="50" />
-        </property>
         <property name="isMarshoum" type="java.lang.Boolean">
             <column name="IS_MARSHOUM" />
         </property>
@@ -83,20 +83,12 @@
         <property name="lastModifiedBy" type="string">
             <column name="LAST_MODIFIED_BY" length="50" />
         </property>
-        <property name="levelId" type="long">
-            <column name="LEVEL_ID" not-null="true" />
-        </property>
         <set name="stdPhones" table="STD_PHONE" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="STUDENT_ID" />
             </key>
             <one-to-many class="Entities.StdPhone" />
         </set>
-        <set name="studentLevelStates" table="STUDENT_LEVEL_STATE" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="STUDENT_ID" not-null="true" />
-            </key>
-            <one-to-many class="Entities.StudentLevelState" />
-        </set>
+        
     </class>
 </hibernate-mapping>

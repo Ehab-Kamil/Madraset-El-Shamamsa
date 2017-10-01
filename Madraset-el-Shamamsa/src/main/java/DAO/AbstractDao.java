@@ -20,19 +20,19 @@ import org.hibernate.criterion.Example;
  */
 public abstract class AbstractDao<T extends AbstractEntity> {
 
-    private Class<T> entity;
     public Session session;
     private Transaction tx;
+    private Class<T> cls;
 
     public AbstractDao(Class<T> t) {
+        cls = t;
         HibernateFactory.buildIfNeeded();
-        entity = t;
     }
 
     public void create(T t) {
         try {
             startOperation();
-            session.save(t);
+            session.saveOrUpdate(t);
             tx.commit();
         } catch (HibernateException e) {
             handleException(e);
@@ -74,7 +74,7 @@ public abstract class AbstractDao<T extends AbstractEntity> {
         } catch (HibernateException e) {
             handleException(e);
         } finally {
-            HibernateFactory.close(session);
+//            HibernateFactory.close(session);
         }
         return obj;
     }
@@ -92,6 +92,18 @@ public abstract class AbstractDao<T extends AbstractEntity> {
             HibernateFactory.close(session);
         }
         return objects;
+    }
+
+    public T findByCode(String code) {
+        T entity = null;
+        try {
+            startOperation();
+            Query query = session.createQuery("From "+cls.getName()+" alias where alias.code ='" + code + "'");
+            entity = (T) query.uniqueResult();
+        } finally {
+            HibernateFactory.close(session);
+        }
+        return entity;
     }
 
     public List<T> findByExample(T t) {

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="templates/AdminEnglishLayout.xhtml">
+        <ui:define name="pageBody">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>#{constants.add_new_level_term__year}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="content-row">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <b>#{constants.level_head}</b>
+                                </div>
+                            </div>
+                            <h:form  prependId="false">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">#{constants.new_level_code}</label>
+                                        <div class="col-md-3">
+                                            <h:inputText class="form-control" required="true" value="#{levelBean.newLevelSO.levelCode}" id="firstNameInput" requiredMessage="you must enter a Name"/>
+                                        </div>
+                                        <label class="col-md-2 control-label">#{constants.new_level_title}</label>
+                                        <div class="col-md-3">
+                                            <h:inputText class="form-control" value="#{levelBean.newLevelSO.levelName}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-10 col-md-10">
+                                                <h:commandButton type="submit" class="btn btn-info" value="#{constants.add_new_level_button}" action="#{levelBean.addNewLevel()}" />
+                                            </div>
+                                        </div>   
+                                    </div>
+                                </div>
+                            </h:form>
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <b>#{constants.term_head}</b>
+                                </div>
+                            </div>
+                            <h:form  prependId="false">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">#{constants.new_term_code}</label>
+                                        <div class="col-md-3">
+                                            <h:inputText class="form-control" value="#{termBean.newTermSO.termCode}"/>
+                                        </div>
+                                        <label class="col-md-2 control-label">#{constants.new_term_name}</label>
+                                        <div class="col-md-3">
+                                            <h:inputText class="form-control" value="#{termBean.newTermSO.termName}"/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <br/>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">#{constants.level_head}</label>
+                                        <div class="col-md-3">
+                                            <h:selectOneMenu  required="true" id="levelsList" class="selecter_3" value="#{termBean.newTermSO.levelCode}">
+                                                <f:selectItem  itemLabel="Please Select Level" transient="true" />
+                                                <f:selectItems value="#{levelBean.levels}"/>
+                                            </h:selectOneMenu> 
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-10 col-md-10">
+                                            <h:commandButton type="submit" class="btn btn-info" value="#{constants.add_new_level_button}" action="#{termBean.addNewTerm()}" />
+                                        </div>
+                                    </div>  
+                                </div>
+                            </h:form>
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <b>#{constants.year_head}</b>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">#{constants.new_year_code}</label>
+                                    <div class="col-md-3 " style="position: relative;">
+                                        <h:selectBooleanCheckbox class="flat-checkbox-1" value="#{studentBean.isMarshoum}"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">#{constants.new_student_rotba}</label>
+                                    <div class="col-md-3">
+                                        <div class="selecter  cover closed" tabindex="0">
+                                            <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
+                                                <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
+                                            </h:selectOneMenu> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">#{constants.new_student_level}</label>
+                                    <div class="col-md-3">
+                                        <div class="selecter  cover closed" tabindex="0">
+                                            <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
+                                                <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
+                                            </h:selectOneMenu> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">#{constants.new_student_year}</label>
+                                    <div class="col-md-3">
+                                        <div class="selecter  cover closed" tabindex="0">
+                                            <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
+                                                <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
+                                            </h:selectOneMenu> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">#{constants.new_student_term}</label>
+                                    <div class="col-md-3">
+                                        <div class="selecter  cover closed" tabindex="0">
+                                            <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
+                                                <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
+                                            </h:selectOneMenu> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <h:commandButton type="submit" class="btn btn-info" value="#{constants.new_student_add_student_button}" action="#{studentBean.addStudent()}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>
