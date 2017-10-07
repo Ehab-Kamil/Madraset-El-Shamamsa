@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="Entities.Level" table="LEVEL" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
         <id name="levelId" type="long">
@@ -26,11 +26,11 @@
         <property name="lastModifiedBy" type="string">
             <column name="LAST_MODIFIED_BY" length="50" />
         </property>
-        <set name="terms" table="TERM" inverse="true" lazy="true" fetch="select">
+        <set name="years" table="YEAR" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="LEVEL_ID" />
             </key>
-            <one-to-many class="Entities.Term" />
+            <one-to-many class="Entities.Year" />
         </set>
     </class>
 </hibernate-mapping>

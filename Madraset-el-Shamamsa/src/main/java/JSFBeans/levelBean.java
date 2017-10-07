@@ -5,12 +5,12 @@
  */
 package JSFBeans;
 
-import DAO.Managers.LevelManager;
-import DAO.Managers.TermManager;
-import DAO.Managers.YearManager;
+import Managers.LevelManager;
+import Managers.YearManager;
 import Entities.Level;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import screenObject.LevelScreenObject;
 import screenObject.ScreenObject;
 import screenObject.TermSO;
@@ -21,6 +21,7 @@ import screenObject.YearSO;
  * @author Ehab
  */
 @ManagedBean(name = "levelBean")
+@RequestScoped
 public class levelBean {
 
     private LevelScreenObject newLevelSO;
@@ -79,13 +80,11 @@ public class levelBean {
     }
 
     public void addNewLevel() {
-
-        try {
-            LevelManager levelManger = new LevelManager();
+        LevelManager levelManger = new LevelManager();
+        if (newLevelSO.getLevelCode() != null) {
             levelManger.create(newLevelSO);
-//            levels.add(newLevelSO);
-        } catch (Exception e) {
-
+            levels.add(newLevelSO);
+            newLevelSO = new LevelScreenObject();
         }
 
     }

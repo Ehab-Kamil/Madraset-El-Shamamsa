@@ -13,6 +13,7 @@ public class YearSO implements ScreenObject {
 
     private String yearCode;
     private String yearName;
+    private String levelCode;
 
     public String getYearCode() {
         return yearCode;
@@ -30,4 +31,18 @@ public class YearSO implements ScreenObject {
         this.yearName = yearName;
     }
 
+    public String getLevelCode() {
+        return levelCode;
+    }
+
+    public void setLevelCode(String levelCode) {
+        this.levelCode = levelCode;
+    }
+
+    @Override
+    public String toString() {
+        return getYearCode();
+    }
+
+    
 }

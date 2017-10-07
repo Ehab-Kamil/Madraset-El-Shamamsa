@@ -5,10 +5,9 @@
  */
 package Transformers;
 
-import Entities.Level;
+import DAO.TermDAO;
 import Entities.StdStudent;
 import Entities.Term;
-import Entities.Year;
 import screenObject.StudentScreenObject;
 
 /**
@@ -28,14 +27,12 @@ public class StudentTransformer extends AbstractTransformer<StdStudent, StudentS
         entity.setCode(screenObject.getCode());
         entity.setFirstName(screenObject.getFirstName());
         entity.setMiddleName(screenObject.getMiddleName());
-        Level level1 = new Level();
-        
-        Term term = new Term();
-        term.setLevel(level1);
-        
-        Year year = new Year();
-        year.setTerm(term);
-        entity.setYear(year);
+
+        TermDAO termDao = new TermDAO();
+        Term term = termDao.findByCode(screenObject.getTermCode());
+
+        entity.setTerm(term);
+
         return entity;
     }
 

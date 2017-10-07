@@ -1,5 +1,5 @@
 package Entities;
-// Generated Sep 29, 2017 12:28:05 PM by Hibernate Tools 4.3.1
+// Generated Oct 5, 2017 11:18:29 AM by Hibernate Tools 4.3.1
 
 
 import java.io.Serializable;
@@ -18,15 +18,16 @@ public class LessonContent  implements java.io.Serializable {
      private EducationalState educationalState;
      private Lesson lesson;
      private Place place;
-     private Teacher teacher;
      private Serializable code;
      private Date startDate;
      private Date endDate;
+     private Long teacherId;
      private String lastModifiedBy;
      private Date creationDate;
      private String createdBy;
      private Date lastModifiedDate;
      private Set classes = new HashSet(0);
+     private Set teacherLessonContents = new HashSet(0);
      private Set studentLessonAttendences = new HashSet(0);
 
     public LessonContent() {
@@ -36,21 +37,22 @@ public class LessonContent  implements java.io.Serializable {
     public LessonContent(long lessonContentId) {
         this.lessonContentId = lessonContentId;
     }
-    public LessonContent(long lessonContentId, Content content, EducationalState educationalState, Lesson lesson, Place place, Teacher teacher, Serializable code, Date startDate, Date endDate, String lastModifiedBy, Date creationDate, String createdBy, Date lastModifiedDate, Set classes, Set studentLessonAttendences) {
+    public LessonContent(long lessonContentId, Content content, EducationalState educationalState, Lesson lesson, Place place, Serializable code, Date startDate, Date endDate, Long teacherId, String lastModifiedBy, Date creationDate, String createdBy, Date lastModifiedDate, Set classes, Set teacherLessonContents, Set studentLessonAttendences) {
        this.lessonContentId = lessonContentId;
        this.content = content;
        this.educationalState = educationalState;
        this.lesson = lesson;
        this.place = place;
-       this.teacher = teacher;
        this.code = code;
        this.startDate = startDate;
        this.endDate = endDate;
+       this.teacherId = teacherId;
        this.lastModifiedBy = lastModifiedBy;
        this.creationDate = creationDate;
        this.createdBy = createdBy;
        this.lastModifiedDate = lastModifiedDate;
        this.classes = classes;
+       this.teacherLessonContents = teacherLessonContents;
        this.studentLessonAttendences = studentLessonAttendences;
     }
    
@@ -89,13 +91,6 @@ public class LessonContent  implements java.io.Serializable {
     public void setPlace(Place place) {
         this.place = place;
     }
-    public Teacher getTeacher() {
-        return this.teacher;
-    }
-    
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
     public Serializable getCode() {
         return this.code;
     }
@@ -116,6 +111,13 @@ public class LessonContent  implements java.io.Serializable {
     
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+    public Long getTeacherId() {
+        return this.teacherId;
+    }
+    
+    public void setTeacherId(Long teacherId) {
+        this.teacherId = teacherId;
     }
     public String getLastModifiedBy() {
         return this.lastModifiedBy;
@@ -151,6 +153,13 @@ public class LessonContent  implements java.io.Serializable {
     
     public void setClasses(Set classes) {
         this.classes = classes;
+    }
+    public Set getTeacherLessonContents() {
+        return this.teacherLessonContents;
+    }
+    
+    public void setTeacherLessonContents(Set teacherLessonContents) {
+        this.teacherLessonContents = teacherLessonContents;
     }
     public Set getStudentLessonAttendences() {
         return this.studentLessonAttendences;

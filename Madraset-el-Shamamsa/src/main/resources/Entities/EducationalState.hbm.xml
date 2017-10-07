@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="Entities.EducationalState" table="EDUCATIONAL_STATE" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
         <id name="educationalStateId" type="long">
@@ -9,7 +9,7 @@
             <generator class="assigned" />
         </id>
         <property name="code" type="string">
-            <column name="CODE" length="50" />
+            <column name="CODE" length="50" not-null="true" />
         </property>
         <property name="name" type="string">
             <column name="NAME" length="50" />

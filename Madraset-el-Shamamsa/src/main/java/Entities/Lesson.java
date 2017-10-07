@@ -1,5 +1,5 @@
 package Entities;
-// Generated Sep 29, 2017 12:28:05 PM by Hibernate Tools 4.3.1
+// Generated Oct 5, 2017 11:18:29 AM by Hibernate Tools 4.3.1
 
 
 import java.io.Serializable;
@@ -14,7 +14,7 @@ public class Lesson  implements java.io.Serializable {
 
 
      private long lessonId;
-     private Year year;
+     private Term term;
      private Serializable code;
      private Serializable name;
      private Integer durationInHours;
@@ -31,9 +31,9 @@ public class Lesson  implements java.io.Serializable {
     public Lesson(long lessonId) {
         this.lessonId = lessonId;
     }
-    public Lesson(long lessonId, Year year, Serializable code, Serializable name, Integer durationInHours, Date creationDate, String createdBy, Date lastModifiedDate, String lastModifiedBy, Set lessonContents) {
+    public Lesson(long lessonId, Term term, Serializable code, Serializable name, Integer durationInHours, Date creationDate, String createdBy, Date lastModifiedDate, String lastModifiedBy, Set lessonContents) {
        this.lessonId = lessonId;
-       this.year = year;
+       this.term = term;
        this.code = code;
        this.name = name;
        this.durationInHours = durationInHours;
@@ -51,12 +51,12 @@ public class Lesson  implements java.io.Serializable {
     public void setLessonId(long lessonId) {
         this.lessonId = lessonId;
     }
-    public Year getYear() {
-        return this.year;
+    public Term getTerm() {
+        return this.term;
     }
     
-    public void setYear(Year year) {
-        this.year = year;
+    public void setTerm(Term term) {
+        this.term = term;
     }
     public Serializable getCode() {
         return this.code;

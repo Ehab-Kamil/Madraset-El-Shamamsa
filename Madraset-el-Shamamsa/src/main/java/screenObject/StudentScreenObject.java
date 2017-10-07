@@ -13,7 +13,6 @@ import java.util.Date;
  *
  * @author Ehab
  */
-
 public class StudentScreenObject implements ScreenObject {
 
     private long studentId;
@@ -41,7 +40,7 @@ public class StudentScreenObject implements ScreenObject {
     private String createdBy;
     private Date lastModificationDate;
     private String lastModifiedBy;
-    private ArrayList<StdStudent> students;
+    private String termCode;
 
     public long getStudentId() {
         return studentId;
@@ -243,12 +242,12 @@ public class StudentScreenObject implements ScreenObject {
         this.lastModifiedBy = lastModifiedBy;
     }
 
-    public ArrayList<StdStudent> getStudents() {
-        return students;
+    public String getTermCode() {
+        return termCode;
     }
 
-    public void setStudents(ArrayList<StdStudent> students) {
-        this.students = students;
+    public void setTermCode(String termCode) {
+        this.termCode = termCode;
     }
 
 }

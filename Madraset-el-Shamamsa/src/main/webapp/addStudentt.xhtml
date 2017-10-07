@@ -23,13 +23,13 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">#{constants.new_student_full_name}</label>
                                         <div class="col-md-3">
-                                            <h:inputText class="form-control" required="true" value="#{studentBean.firstName}" id="firstNameInput" requiredMessage="you must enter a Name"/>
+                                            <h:inputText class="form-control" required="true" value="#{studentBean.studentSO.firstName}" id="firstNameInput" requiredMessage="you must enter a Name"/>
                                         </div>
                                         <div class="col-md-3">
-                                            <h:inputText class="form-control" value="#{studentBean.middleName}"/>
+                                            <h:inputText class="form-control" value="#{studentBean.studentSO.middleName}"/>
                                         </div>
                                         <div class="col-md-3">
-                                            <h:inputText class="form-control" value="#{studentBean.lastName}"/>
+                                            <h:inputText class="form-control" value="#{studentBean.studentSO.lastName}"/>
                                         </div>
                                     </div>
                                     <br/>
@@ -38,7 +38,8 @@
                                         <label class="col-md-2 control-label">#{constants.new_student_educational_state}</label>
                                         <div class="col-md-3">
                                             <div class="selecter  cover closed" tabindex="0">
-                                                <h:selectOneMenu  class="selecter_3" value="#{studentBean.educationalStage}">
+                                                <h:selectOneMenu  class="selecter_3" value="#{studentBean.studentSO.educationalStage}">
+                                                    <f:selectItem  itemLabel="#{constants.levels_drop_down_hint}" transient="true" />
                                                     <f:selectItems value="#{studentBean.educationalStageMap}"/>
                                                 </h:selectOneMenu>
                                             </div>
@@ -46,7 +47,8 @@
                                         <label class="col-md-2 control-label">#{constants.new_student_grade}</label>
                                         <div class="col-md-3">
                                             <div class="selecter  cover closed" tabindex="0">
-                                                <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
+                                                <h:selectOneMenu class="selecter_3" value="#{studentBean.studentSO.educationalStageYear}">
+                                                    <f:selectItem  itemLabel="#{constants.levels_drop_down_hint}" transient="true" />
                                                     <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
                                                 </h:selectOneMenu> 
                                             </div>
@@ -57,7 +59,7 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">#{constants.new_student_job_title}</label>
                                         <div class="col-md-3">
-                                            <h:inputText class="form-control" value="#{studentBean.jobTitle}" />
+                                            <h:inputText class="form-control" value="#{studentBean.studentSO.jobTitle}" />
                                         </div>
                                     </div>
                                     <br/>
@@ -65,7 +67,7 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">#{constants.new_student_birthdate}</label>
                                         <div class="col-md-3">
-                                            <p:calendar value="#{studentBean.birthdate}"/>
+                                            <p:calendar value="#{studentBean.studentSO.birthdate}"/>
                                         </div>
                                     </div>
                                     <br/>
@@ -73,11 +75,11 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">#{constants.new_student_facebook_name}</label>
                                         <div class="col-md-3">
-                                            <h:inputText class="form-control" value="#{studentBean.facebookName}"/>
+                                            <h:inputText class="form-control" value="#{studentBean.studentSO.facebookName}"/>
                                         </div>
                                         <label class="col-md-2 control-label">#{constants.new_student_email}</label>
                                         <div class="col-md-3">
-                                            <h:inputText class="form-control" value="#{studentBean.email}" />
+                                            <h:inputText class="form-control" value="#{studentBean.studentSO.email}" />
                                         </div>
                                     </div>
                                     <br/>
@@ -85,11 +87,11 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">#{constants.new_student_conf_father}</label>
                                         <div class="col-md-3">
-                                            <h:inputText class="form-control" value="#{studentBean.confFather}"/>
+                                            <h:inputText class="form-control" value="#{studentBean.studentSO.confFather}"/>
                                         </div>
                                         <label class="col-md-2 control-label">#{constants.new_student_father_church}</label>
                                         <div class="col-md-3">
-                                            <h:inputText class="form-control" value="#{studentBean.confFatherChurch}" />
+                                            <h:inputText class="form-control" value="#{studentBean.studentSO.confFatherChurch}" />
                                         </div>
                                     </div>
                                 </div>
@@ -102,11 +104,11 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">#{constants.new_student_address_bulding_no}</label>
                                         <div class="col-md-3">
-                                            <h:inputText class="form-control" value="#{studentBean.addBuildingNo}"/>
+                                            <h:inputText class="form-control" value="#{studentBean.studentSO.addBuildingNo}"/>
                                         </div>
                                         <label class="col-md-2 control-label">#{constants.new_student_address_street}</label>
                                         <div class="col-md-3">
-                                            <h:inputText class="form-control" value="#{studentBean.addStreet}"/>
+                                            <h:inputText class="form-control" value="#{studentBean.studentSO.addStreet}"/>
                                         </div>
                                     </div>
                                     <br/>
@@ -114,11 +116,11 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">#{constants.new_student_address_floor}</label>
                                         <div class="col-md-3">
-                                            <h:inputText class="form-control" value="#{studentBean.addFloorNo}"/>
+                                            <h:inputText class="form-control" value="#{studentBean.studentSO.addFloorNo}"/>
                                         </div>
                                         <label class="col-md-2 control-label">#{constants.new_student_address_flat}</label>
                                         <div class="col-md-3">
-                                            <h:inputText class="form-control" value="#{studentBean.addFlatNo}"/>
+                                            <h:inputText class="form-control" value="#{studentBean.studentSO.addFlatNo}"/>
                                         </div>
                                     </div>
                                     <br/>
@@ -126,7 +128,7 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="description">#{constants.new_student_address_desc}</label>
                                         <div class="col-md-10">
-                                            <h:inputTextarea class="form-control" value="#{studentBean.addDesc}" rows="10" cols="30"/>
+                                            <h:inputTextarea class="form-control" value="#{studentBean.studentSO.addDesc}" rows="10" cols="30"/>
                                         </div>
                                     </div>
                                     <br/>
@@ -141,53 +143,27 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">#{constants.new_student_reshama}</label>
                                         <div class="col-md-3 " style="position: relative;">
-                                            <h:selectBooleanCheckbox class="flat-checkbox-1" value="#{studentBean.isMarshoum}"/>
+                                            <h:selectBooleanCheckbox class="flat-checkbox-1" value="#{studentBean.studentSO.isMarshoum}"/>
                                         </div>
                                     </div>
-                                    <br/>
-                                    <br/>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">#{constants.new_student_rotba}</label>
                                         <div class="col-md-3">
                                             <div class="selecter  cover closed" tabindex="0">
-                                                <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
+                                                <h:selectOneMenu class="selecter_3" value="#{studentBean.studentSO.educationalStageYear}">
+                                                    <f:selectItem  itemLabel="#{constants.levels_drop_down_hint}" transient="true" />
                                                     <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
                                                 </h:selectOneMenu> 
                                             </div>
                                         </div>
                                     </div>
-                                    <br/>
-                                    <br/>
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label">#{constants.new_student_level}</label>
-                                        <div class="col-md-3">
-                                            <div class="selecter  cover closed" tabindex="0">
-                                                <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
-                                                    <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
-                                                </h:selectOneMenu> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br/>
-                                    <br/>
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label">#{constants.new_student_year}</label>
-                                        <div class="col-md-3">
-                                            <div class="selecter  cover closed" tabindex="0">
-                                                <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
-                                                    <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
-                                                </h:selectOneMenu> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br/>
-                                    <br/>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">#{constants.new_student_term}</label>
                                         <div class="col-md-3">
                                             <div class="selecter  cover closed" tabindex="0">
-                                                <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
-                                                    <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
+                                                <h:selectOneMenu class="selecter_3" value="#{studentBean.studentSO.termCode}">
+                                                    <f:selectItem  itemLabel="#{constants.levels_drop_down_hint}" transient="true" />
+                                                    <f:selectItems value="#{termBean.terms}"/>
                                                 </h:selectOneMenu> 
                                             </div>
                                         </div>
@@ -196,8 +172,8 @@
                                 <br/>
                                 <br/>
                                 <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <h:commandButton type="submit" class="btn btn-info" value="#{constants.new_student_add_student_button}" action="#{studentBean.addStudent()}" />
+                                    <div class="col-md-offset-10 col-md-10">
+                                        <h:commandButton type="submit" class="btn btn-success " value="#{constants.new_student_add_student_button}" action="#{studentBean.addStudent()}" />
                                     </div>
                                 </div>
                             </div>

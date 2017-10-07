@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entities.TeacherLessonContent" table="TEACHER_LESSON_CONTENT" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+        <composite-id name="id" class="Entities.TeacherLessonContentId">
+            <key-property name="teacherId" type="java.lang.Long">
+                <column name="TEACHER_ID" />
+            </key-property>
+            <key-property name="lessonContentId" type="java.lang.Long">
+                <column name="LESSON_CONTENT_ID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="lessonContent" class="Entities.LessonContent" update="false" insert="false" fetch="select">
+            <column name="LESSON_CONTENT_ID" />
+        </many-to-one>
+        <many-to-one name="teacher" class="Entities.Teacher" update="false" insert="false" fetch="select">
+            <column name="TEACHER_ID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
