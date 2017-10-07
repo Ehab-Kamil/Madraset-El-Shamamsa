@@ -13,7 +13,7 @@ public class TermSO implements ScreenObject {
 
     private String termCode;
     private String termName;
-    private String levelCode;
+    private String yearCode;
 
     public String getTermCode() {
         return termCode;
@@ -31,12 +31,17 @@ public class TermSO implements ScreenObject {
         this.termName = termName;
     }
 
-    public String getLevelCode() {
-        return levelCode;
+    public String getYearCode() {
+        return yearCode;
     }
 
-    public void setLevelCode(String levelCode) {
-        this.levelCode = levelCode;
+    public void setYearCode(String yearCode) {
+        this.yearCode = yearCode;
+    }
+
+    @Override
+    public String toString() {
+        return getTermCode();
     }
 
 }

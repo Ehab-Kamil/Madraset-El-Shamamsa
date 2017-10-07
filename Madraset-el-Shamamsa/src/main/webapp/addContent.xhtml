@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="templates/AdminEnglishLayout.xhtml">
+        <ui:define name="pageBody">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>#{constants.add_new_level_term__year}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="content-row">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <b>#{constants.new_content_head}</b>
+                                </div>
+                            </div>
+                            <h:form id="level_form" prependId="false">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">#{constants.new_content_code}</label>
+                                        <div class="col-md-4">
+                                            <h:inputText class="form-control" required="true" value="#{contentBean.contentSO.contentCode}" id="firstNameInput" requiredMessage="you must enter a Name"/>
+                                        </div>
+                                        <label class="col-md-2 control-label">#{constants.new_content_name}</label>
+                                        <div class="col-md-4">
+                                            <h:inputText class="form-control" value="#{contentBean.contentSO.contentName}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">#{constants.new_content_parent_code}</label>
+                                            <div class="col-md-3">
+                                                <h:selectOneMenu  required="true" id="levelsList" styleClass="selecter_3" value="#{contentBean.contentSO.parentContentCode}">
+                                                    <f:selectItem  itemLabel="#{constants.new_content_parent_code}" transient="true" />
+                                                    <f:selectItems value="#{contentBean.contents}"/>
+                                                </h:selectOneMenu> 
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-10 col-md-10">
+                                                <h:commandButton type="submit" class="btn btn-success" value="#{constants.new_content_button}" action="#{contentBean.addContent()}" >
+                                                    <f:ajax  execute="@form"  />
+                                                </h:commandButton>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                </div>
+                            </h:form>
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,5 +1,5 @@
 package Entities;
-// Generated Sep 29, 2017 12:28:05 PM by Hibernate Tools 4.3.1
+// Generated Oct 5, 2017 11:18:29 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -20,7 +20,7 @@ public class Teacher  implements java.io.Serializable {
      private String createdBy;
      private Date lastModificationDate;
      private String lastModifiedBy;
-     private Set lessonContents = new HashSet(0);
+     private Set teacherLessonContents = new HashSet(0);
 
     public Teacher() {
     }
@@ -29,7 +29,7 @@ public class Teacher  implements java.io.Serializable {
     public Teacher(long teacherId) {
         this.teacherId = teacherId;
     }
-    public Teacher(long teacherId, String code, String name, String desecription, Date creationDate, String createdBy, Date lastModificationDate, String lastModifiedBy, Set lessonContents) {
+    public Teacher(long teacherId, String code, String name, String desecription, Date creationDate, String createdBy, Date lastModificationDate, String lastModifiedBy, Set teacherLessonContents) {
        this.teacherId = teacherId;
        this.code = code;
        this.name = name;
@@ -38,7 +38,7 @@ public class Teacher  implements java.io.Serializable {
        this.createdBy = createdBy;
        this.lastModificationDate = lastModificationDate;
        this.lastModifiedBy = lastModifiedBy;
-       this.lessonContents = lessonContents;
+       this.teacherLessonContents = teacherLessonContents;
     }
    
     public long getTeacherId() {
@@ -97,12 +97,12 @@ public class Teacher  implements java.io.Serializable {
     public void setLastModifiedBy(String lastModifiedBy) {
         this.lastModifiedBy = lastModifiedBy;
     }
-    public Set getLessonContents() {
-        return this.lessonContents;
+    public Set getTeacherLessonContents() {
+        return this.teacherLessonContents;
     }
     
-    public void setLessonContents(Set lessonContents) {
-        this.lessonContents = lessonContents;
+    public void setTeacherLessonContents(Set teacherLessonContents) {
+        this.teacherLessonContents = teacherLessonContents;
     }
 
 

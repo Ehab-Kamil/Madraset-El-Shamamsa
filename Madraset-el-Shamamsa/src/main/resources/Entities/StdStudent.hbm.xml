@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="Entities.StdStudent" table="STD_STUDENT" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
         <id name="studentId" type="long">
             <column name="STUDENT_ID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <many-to-one name="educationalState" class="Entities.EducationalState" fetch="select">
             <column name="EDUCATIONAL_STATE_ID" />
         </many-to-one>
-        <many-to-one name="year" class="Entities.Year" fetch="select">
-            <column name="YEAR_ID" not-null="true" />
+        <many-to-one name="term" class="Entities.Term" fetch="select">
+            <column name="TERM_ID" not-null="true" />
         </many-to-one>
         <property name="code" type="string">
             <column name="CODE" length="50" />
@@ -83,12 +83,23 @@
         <property name="lastModifiedBy" type="string">
             <column name="LAST_MODIFIED_BY" length="50" />
         </property>
+        <set name="studentLessonAttendences" table="STUDENT_LESSON_ATTENDENCE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="STUDENT_ID" not-null="true" />
+            </key>
+            <one-to-many class="Entities.StudentLessonAttendence" />
+        </set>
         <set name="stdPhones" table="STD_PHONE" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="STUDENT_ID" />
             </key>
             <one-to-many class="Entities.StdPhone" />
         </set>
-        
+        <set name="usrSubscribers" table="USR_SUBSCRIBER" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DEFAULT_STUDENT_ID" />
+            </key>
+            <one-to-many class="Entities.UsrSubscriber" />
+        </set>
     </class>
 </hibernate-mapping>

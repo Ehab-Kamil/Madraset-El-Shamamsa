@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO.Managers;
+package Enums;
 
 /**
- *  This class Get Sequencer for specific entity and get the next sequence
+ *
  * @author Ehab
  */
-public class SequencerManger {
-    
-    
-    
-    
-    
-    
-    
-    
+public enum ContentType {
+
+    TAKST(0), LA7N(1);
+
+    private int integer;
+
+    ContentType(Integer integer) {
+        this.integer = integer;
+    }
+
 }

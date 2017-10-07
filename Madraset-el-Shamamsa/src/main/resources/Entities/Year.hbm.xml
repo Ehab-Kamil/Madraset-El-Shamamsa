@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="Entities.Year" table="YEAR" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
         <id name="yearId" type="long">
             <column name="YEAR_ID" />
-            <generator class="native" />
+            <generator class="increment" />
         </id>
-        <many-to-one name="term" class="Entities.Term" fetch="select">
-            <column name="TERM_ID" not-null="true" />
+        <many-to-one name="level" class="Entities.Level" fetch="select" lazy="false">
+            <column name="LEVEL_ID" />
         </many-to-one>
         <property name="code" type="string">
             <column name="CODE" length="50" />
@@ -30,22 +30,16 @@
             <column name="CREATED_BY" length="50" />
         </property>
         <property name="lastModifiedDate" type="date">
-            <column name="LAST_MODIFIED_DATE" length="10" />
+            <column name="LAST_MODIFIED_DATE" length="10" not-null="true" />
         </property>
         <property name="lastModifiedBy" type="string">
             <column name="LAST_MODIFIED_BY" length="50" />
         </property>
-        <set name="stdStudents" table="STD_STUDENT" inverse="true" lazy="true" fetch="select">
+        <set name="terms" table="TERM" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="YEAR_ID" not-null="true" />
             </key>
-            <one-to-many class="Entities.StdStudent" />
-        </set>
-        <set name="lessons" table="LESSON" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="YEAR_ID" />
-            </key>
-            <one-to-many class="Entities.Lesson" />
+            <one-to-many class="Entities.Term" />
         </set>
     </class>
 </hibernate-mapping>

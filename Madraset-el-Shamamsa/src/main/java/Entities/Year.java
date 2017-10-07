@@ -1,5 +1,5 @@
 package Entities;
-// Generated Sep 29, 2017 12:28:05 PM by Hibernate Tools 4.3.1
+// Generated Oct 5, 2017 11:18:29 AM by Hibernate Tools 4.3.1
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.Set;
 public class Year implements AbstractEntity, Serializable {
 
     private long yearId;
-    private Term term;
+    private Level level;
     private String code;
     private String name;
     private Date startDate;
@@ -21,20 +21,19 @@ public class Year implements AbstractEntity, Serializable {
     private String createdBy;
     private Date lastModifiedDate;
     private String lastModifiedBy;
-    private Set stdStudents = new HashSet(0);
-    private Set lessons = new HashSet(0);
+    private Set terms = new HashSet(0);
 
     public Year() {
     }
 
-    public Year(long yearId, Term term) {
+    public Year(long yearId, Date lastModifiedDate) {
         this.yearId = yearId;
-        this.term = term;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
-    public Year(long yearId, Term term, String code, String name, Date startDate, Date endDate, Date creationDate, String createdBy, Date lastModifiedDate, String lastModifiedBy, Set stdStudents, Set lessons) {
+    public Year(long yearId, Level level, String code, String name, Date startDate, Date endDate, Date creationDate, String createdBy, Date lastModifiedDate, String lastModifiedBy, Set terms) {
         this.yearId = yearId;
-        this.term = term;
+        this.level = level;
         this.code = code;
         this.name = name;
         this.startDate = startDate;
@@ -43,8 +42,7 @@ public class Year implements AbstractEntity, Serializable {
         this.createdBy = createdBy;
         this.lastModifiedDate = lastModifiedDate;
         this.lastModifiedBy = lastModifiedBy;
-        this.stdStudents = stdStudents;
-        this.lessons = lessons;
+        this.terms = terms;
     }
 
     public long getYearId() {
@@ -55,12 +53,12 @@ public class Year implements AbstractEntity, Serializable {
         this.yearId = yearId;
     }
 
-    public Term getTerm() {
-        return this.term;
+    public Level getLevel() {
+        return this.level;
     }
 
-    public void setTerm(Term term) {
-        this.term = term;
+    public void setLevel(Level level) {
+        this.level = level;
     }
 
     public String getCode() {
@@ -72,7 +70,7 @@ public class Year implements AbstractEntity, Serializable {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
@@ -127,20 +125,12 @@ public class Year implements AbstractEntity, Serializable {
         this.lastModifiedBy = lastModifiedBy;
     }
 
-    public Set getStdStudents() {
-        return this.stdStudents;
+    public Set getTerms() {
+        return this.terms;
     }
 
-    public void setStdStudents(Set stdStudents) {
-        this.stdStudents = stdStudents;
-    }
-
-    public Set getLessons() {
-        return this.lessons;
-    }
-
-    public void setLessons(Set lessons) {
-        this.lessons = lessons;
+    public void setTerms(Set terms) {
+        this.terms = terms;
     }
 
 }

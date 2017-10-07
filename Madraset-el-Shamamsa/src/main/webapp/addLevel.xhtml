@@ -18,7 +18,7 @@
                                     <b>#{constants.level_head}</b>
                                 </div>
                             </div>
-                            <h:form  prependId="false">
+                            <h:form id="level_form" prependId="false">
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">#{constants.new_level_code}</label>
@@ -31,10 +31,48 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-offset-10 col-md-10">
-                                                <h:commandButton type="submit" class="btn btn-info" value="#{constants.add_new_level_button}" action="#{levelBean.addNewLevel()}" />
+                                                <h:commandButton type="submit" class="btn btn-success" value="#{constants.add_new_level_button}" action="#{levelBean.addNewLevel()}" >
+                                                    <f:ajax  execute="@form"  render="level_form year_form"/>
+                                                </h:commandButton>
                                             </div>
                                         </div>   
                                     </div>
+                                </div>
+                            </h:form>
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <b>#{constants.year_head}</b>
+                                </div>
+                            </div>
+                            <h:form id="year_form" prependId="false">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">#{constants.new_year_code}</label>
+                                        <div class="col-md-3">
+                                            <h:inputText class="form-control" value="#{yearBean.year.yearCode}"/>
+                                        </div>
+                                        <label class="col-md-2 control-label">#{constants.new_year_name}</label>
+                                        <div class="col-md-3">
+                                            <h:inputText class="form-control" value="#{yearBean.year.yearName}"/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <br/>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">#{constants.level_head}</label>
+                                        <div class="col-md-3">
+                                            <h:selectOneMenu  required="true" id="levelsList" styleClass="selecter_3" value="#{yearBean.year.levelCode}">
+                                                <f:selectItem  itemLabel="#{constants.levels_drop_down_hint}" transient="true" />
+                                                <f:selectItems value="#{levelBean.levels}"/>
+                                            </h:selectOneMenu> 
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-10 col-md-10">
+                                            <h:commandButton type="submit" class="btn btn-success" value="#{constants.add_new_level_term__year}" action="#{yearBean.addYear()}"  >
+                                            </h:commandButton>
+                                        </div>
+                                    </div>  
                                 </div>
                             </h:form>
                             <div class="panel-heading">
@@ -57,89 +95,23 @@
                                     <br/>
                                     <br/>
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label">#{constants.level_head}</label>
+                                        <label class="col-md-2 control-label">#{constants.year_head}</label>
                                         <div class="col-md-3">
-                                            <h:selectOneMenu  required="true" id="levelsList" class="selecter_3" value="#{termBean.newTermSO.levelCode}">
-                                                <f:selectItem  itemLabel="Please Select Level" transient="true" />
-                                                <f:selectItems value="#{levelBean.levels}"/>
+                                            <h:selectOneMenu  required="true" id="yearsList"  class="selecter_3" value="#{termBean.newTermSO.yearCode}">
+                                                <f:selectItem  itemLabel="#{constants.years_drop_down_hint}" transient="true" />
+                                                <f:selectItems  value="#{yearBean.years}"/>
                                             </h:selectOneMenu> 
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-offset-10 col-md-10">
-                                            <h:commandButton type="submit" class="btn btn-info" value="#{constants.add_new_level_button}" action="#{termBean.addNewTerm()}" />
+                                            <h:commandButton type="submit" class="btn btn-success" value="#{constants.add_new_level_term__year}" action="#{termBean.addNewTerm()}" />
                                         </div>
                                     </div>  
                                 </div>
                             </h:form>
-                            <div class="panel-heading">
-                                <div class="panel-title">
-                                    <b>#{constants.year_head}</b>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">#{constants.new_year_code}</label>
-                                    <div class="col-md-3 " style="position: relative;">
-                                        <h:selectBooleanCheckbox class="flat-checkbox-1" value="#{studentBean.isMarshoum}"/>
-                                    </div>
-                                </div>
-                                <br/>
-                                <br/>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">#{constants.new_student_rotba}</label>
-                                    <div class="col-md-3">
-                                        <div class="selecter  cover closed" tabindex="0">
-                                            <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
-                                                <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
-                                            </h:selectOneMenu> 
-                                        </div>
-                                    </div>
-                                </div>
-                                <br/>
-                                <br/>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">#{constants.new_student_level}</label>
-                                    <div class="col-md-3">
-                                        <div class="selecter  cover closed" tabindex="0">
-                                            <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
-                                                <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
-                                            </h:selectOneMenu> 
-                                        </div>
-                                    </div>
-                                </div>
-                                <br/>
-                                <br/>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">#{constants.new_student_year}</label>
-                                    <div class="col-md-3">
-                                        <div class="selecter  cover closed" tabindex="0">
-                                            <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
-                                                <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
-                                            </h:selectOneMenu> 
-                                        </div>
-                                    </div>
-                                </div>
-                                <br/>
-                                <br/>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">#{constants.new_student_term}</label>
-                                    <div class="col-md-3">
-                                        <div class="selecter  cover closed" tabindex="0">
-                                            <h:selectOneMenu class="selecter_3" value="#{studentBean.educationalStageYear}">
-                                                <f:selectItems value="#{studentBean.educationalStageYearMap}"/>
-                                            </h:selectOneMenu> 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <br/>
                             <br/>
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <h:commandButton type="submit" class="btn btn-info" value="#{constants.new_student_add_student_button}" action="#{studentBean.addStudent()}" />
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

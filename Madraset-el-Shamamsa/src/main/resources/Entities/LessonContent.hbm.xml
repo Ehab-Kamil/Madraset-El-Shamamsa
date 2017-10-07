@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="Entities.LessonContent" table="LESSON_CONTENT" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
         <id name="lessonContentId" type="long">
@@ -20,9 +20,6 @@
         <many-to-one name="place" class="Entities.Place" fetch="select">
             <column name="PLACE_ID" />
         </many-to-one>
-        <many-to-one name="teacher" class="Entities.Teacher" fetch="select">
-            <column name="TEACHER_ID" />
-        </many-to-one>
         <property name="code" type="serializable">
             <column name="CODE" />
         </property>
@@ -31,6 +28,9 @@
         </property>
         <property name="endDate" type="timestamp">
             <column name="END_DATE" length="23" />
+        </property>
+        <property name="teacherId" type="java.lang.Long">
+            <column name="TEACHER_ID" />
         </property>
         <property name="lastModifiedBy" type="string">
             <column name="LAST_MODIFIED_BY" length="50" />
@@ -49,6 +49,12 @@
                 <column name="LESSON_CONTENT_ID" />
             </key>
             <one-to-many class="Entities.Class" />
+        </set>
+        <set name="teacherLessonContents" table="TEACHER_LESSON_CONTENT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="LESSON_CONTENT_ID" />
+            </key>
+            <one-to-many class="Entities.TeacherLessonContent" />
         </set>
         <set name="studentLessonAttendences" table="STUDENT_LESSON_ATTENDENCE" inverse="true" lazy="true" fetch="select">
             <key>

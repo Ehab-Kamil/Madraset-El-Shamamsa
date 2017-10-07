@@ -1,5 +1,5 @@
 package Entities;
-// Generated Sep 29, 2017 12:28:05 PM by Hibernate Tools 4.3.1
+// Generated Oct 5, 2017 11:18:29 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -21,8 +21,9 @@ public class EducationalState  implements java.io.Serializable {
     }
 
 	
-    public EducationalState(long educationalStateId) {
+    public EducationalState(long educationalStateId, String code) {
         this.educationalStateId = educationalStateId;
+        this.code = code;
     }
     public EducationalState(long educationalStateId, String code, String name, Set lessonContents, Set stdStudents) {
        this.educationalStateId = educationalStateId;

@@ -1,5 +1,5 @@
 package Entities;
-// Generated Sep 29, 2017 12:28:05 PM by Hibernate Tools 4.3.1
+// Generated Oct 5, 2017 11:18:29 AM by Hibernate Tools 4.3.1
 
 
 import java.io.Serializable;
@@ -14,37 +14,39 @@ public class Term  implements AbstractEntity, Serializable {
 
 
      private long termId;
-     private Level level;
+     private Year year;
      private String code;
-     private String year;
+     private String name;
      private Date startDate;
      private Date endDate;
      private Date creationDate;
      private String createdBy;
      private Date lastModifiedDate;
      private String lastModifiedBy;
-     private Set years = new HashSet(0);
+     private Set stdStudents = new HashSet(0);
+     private Set lessons = new HashSet(0);
 
     public Term() {
     }
 
 	
-    public Term(long termId, Date lastModifiedDate) {
+    public Term(long termId, Year year) {
         this.termId = termId;
-        this.lastModifiedDate = lastModifiedDate;
+        this.year = year;
     }
-    public Term(long termId, Level level, String code, String year, Date startDate, Date endDate, Date creationDate, String createdBy, Date lastModifiedDate, String lastModifiedBy, Set years) {
+    public Term(long termId, Year year, String code, String name, Date startDate, Date endDate, Date creationDate, String createdBy, Date lastModifiedDate, String lastModifiedBy, Set stdStudents, Set lessons) {
        this.termId = termId;
-       this.level = level;
-       this.code = code;
        this.year = year;
+       this.code = code;
+       this.name = name;
        this.startDate = startDate;
        this.endDate = endDate;
        this.creationDate = creationDate;
        this.createdBy = createdBy;
        this.lastModifiedDate = lastModifiedDate;
        this.lastModifiedBy = lastModifiedBy;
-       this.years = years;
+       this.stdStudents = stdStudents;
+       this.lessons = lessons;
     }
    
     public long getTermId() {
@@ -54,12 +56,12 @@ public class Term  implements AbstractEntity, Serializable {
     public void setTermId(long termId) {
         this.termId = termId;
     }
-    public Level getLevel() {
-        return this.level;
+    public Year getYear() {
+        return this.year;
     }
     
-    public void setLevel(Level level) {
-        this.level = level;
+    public void setYear(Year year) {
+        this.year = year;
     }
     public String getCode() {
         return this.code;
@@ -68,12 +70,12 @@ public class Term  implements AbstractEntity, Serializable {
     public void setCode(String code) {
         this.code = code;
     }
-    public String getYear() {
-        return this.year;
+    public String getName() {
+        return this.name;
     }
     
-    public void setYear(String year) {
-        this.year = year;
+    public void setName(String name) {
+        this.name = name;
     }
     public Date getStartDate() {
         return this.startDate;
@@ -117,12 +119,19 @@ public class Term  implements AbstractEntity, Serializable {
     public void setLastModifiedBy(String lastModifiedBy) {
         this.lastModifiedBy = lastModifiedBy;
     }
-    public Set getYears() {
-        return this.years;
+    public Set getStdStudents() {
+        return this.stdStudents;
     }
     
-    public void setYears(Set years) {
-        this.years = years;
+    public void setStdStudents(Set stdStudents) {
+        this.stdStudents = stdStudents;
+    }
+    public Set getLessons() {
+        return this.lessons;
+    }
+    
+    public void setLessons(Set lessons) {
+        this.lessons = lessons;
     }
 
 

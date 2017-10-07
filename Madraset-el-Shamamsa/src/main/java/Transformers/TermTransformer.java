@@ -5,9 +5,9 @@
  */
 package Transformers;
 
-import DAO.LevelDAO;
-import Entities.Level;
+import DAO.YearDAO;
 import Entities.Term;
+import Entities.Year;
 import java.util.Date;
 import screenObject.TermSO;
 
@@ -21,7 +21,9 @@ public class TermTransformer extends AbstractTransformer<Term, TermSO> {
     public TermSO fromEntityToScreen(Term entity) {
         TermSO so = new TermSO();
         so.setTermCode(entity.getCode());
-        so.setLevelCode(entity.getLevel().getCode());
+        if (entity.getYear() != null) {
+            so.setYearCode(entity.getYear().getCode());
+        }
         return so;
     }
 
@@ -30,9 +32,9 @@ public class TermTransformer extends AbstractTransformer<Term, TermSO> {
         Term term = new Term();
 
         term.setCode(screenObject.getTermCode());
-        LevelDAO levelDao = new LevelDAO();
-        Level level = levelDao.findByCode(screenObject.getLevelCode());
-        term.setLevel(level);
+        YearDAO yearDao = new YearDAO();
+        Year year = yearDao.findByCode(screenObject.getYearCode());
+        term.setYear(year);
         term.setLastModifiedBy("System");
         term.setLastModifiedDate(new Date());
         return term;
