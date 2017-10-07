@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entities.SetNotifications" table="SET_NOTIFICATIONS" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+        <id name="notificationId" type="long">
+            <column name="NOTIFICATION_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="message" type="string">
+            <column name="MESSAGE" />
+        </property>
+        <property name="messageDetails" type="string">
+            <column name="MESSAGE_DETAILS" />
+        </property>
+        <property name="messageLevel" type="java.lang.Integer">
+            <column name="MESSAGE_LEVEL" />
+        </property>
+        <property name="messageDateFrom" type="date">
+            <column name="MESSAGE_DATE_FROM" length="10" />
+        </property>
+        <property name="messageDateTo" type="date">
+            <column name="MESSAGE_DATE_TO" length="10" />
+        </property>
+        <set name="setRolesNotifications" table="SET_ROLES_NOTIFICATION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NOTIFICATION_ID" />
+            </key>
+            <one-to-many class="Entities.SetRolesNotification" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entities.StdStudent" table="STD_STUDENT" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+        <id name="studentId" type="long">
+            <column name="STUDENT_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="educationalState" class="Entities.EducationalState" fetch="select">
+            <column name="EDUCATIONAL_STATE_ID" />
+        </many-to-one>
+        <many-to-one name="year" class="Entities.Year" fetch="select">
+            <column name="YEAR_ID" not-null="true" />
+        </many-to-one>
+        <property name="code" type="string">
+            <column name="CODE" length="50" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="FIRST_NAME" length="50" />
+        </property>
+        <property name="middleName" type="string">
+            <column name="MIDDLE_NAME" length="50" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="LAST_NAME" length="50" />
+        </property>
+        <property name="jobTitle" type="string">
+            <column name="JOB_TITLE" length="50" />
+        </property>
+        <property name="birthdate" type="timestamp">
+            <column name="BIRTHDATE" length="23" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="50" />
+        </property>
+        <property name="facebookName" type="string">
+            <column name="FACEBOOK_NAME" length="50" />
+        </property>
+        <property name="addStreet" type="string">
+            <column name="ADD_STREET" length="50" />
+        </property>
+        <property name="addBuildingNo" type="string">
+            <column name="ADD_BUILDING_NO" length="50" />
+        </property>
+        <property name="addFloorNo" type="string">
+            <column name="ADD_FLOOR_NO" length="50" />
+        </property>
+        <property name="addFlatNo" type="string">
+            <column name="ADD_FLAT_NO" length="50" />
+        </property>
+        <property name="addDesc" type="string">
+            <column name="ADD_DESC" />
+        </property>
+        <property name="confFather" type="string">
+            <column name="CONF_FATHER" length="50" />
+        </property>
+        <property name="confFatherChurch" type="string">
+            <column name="CONF_FATHER_CHURCH" length="50" />
+        </property>
+        <property name="image" type="binary">
+            <column name="IMAGE" />
+        </property>
+        <property name="isMarshoum" type="java.lang.Boolean">
+            <column name="IS_MARSHOUM" />
+        </property>
+        <property name="rankAtChurch" type="string">
+            <column name="RANK_AT_CHURCH" length="50" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" length="50" />
+        </property>
+        <property name="creatioinDate" type="date">
+            <column name="CREATIOIN_DATE" length="10" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="CREATED_BY" length="50" />
+        </property>
+        <property name="lastModificationDate" type="date">
+            <column name="LAST_MODIFICATION_DATE" length="10" />
+        </property>
+        <property name="lastModifiedBy" type="string">
+            <column name="LAST_MODIFIED_BY" length="50" />
+        </property>
+        <set name="stdPhones" table="STD_PHONE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="STUDENT_ID" />
+            </key>
+            <one-to-many class="Entities.StdPhone" />
+        </set>
+        
+    </class>
+</hibernate-mapping>

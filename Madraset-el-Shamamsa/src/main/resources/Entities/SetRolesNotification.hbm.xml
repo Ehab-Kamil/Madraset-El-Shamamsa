@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entities.SetRolesNotification" table="SET_ROLES_NOTIFICATION" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+        <composite-id name="id" class="Entities.SetRolesNotificationId">
+            <key-property name="notificationId" type="java.lang.Long">
+                <column name="NOTIFICATION_ID" />
+            </key-property>
+            <key-property name="roleId" type="java.lang.Long">
+                <column name="ROLE_ID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="setNotifications" class="Entities.SetNotifications" update="false" insert="false" fetch="select">
+            <column name="NOTIFICATION_ID" />
+        </many-to-one>
+        <many-to-one name="usrRole" class="Entities.UsrRole" update="false" insert="false" fetch="select">
+            <column name="ROLE_ID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

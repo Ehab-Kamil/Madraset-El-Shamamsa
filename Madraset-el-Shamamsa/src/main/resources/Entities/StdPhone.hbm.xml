@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entities.StdPhone" table="STD_PHONE" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+        <id name="phoneId" type="string">
+            <column name="PHONE_ID" length="50" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="stdStudent" class="Entities.StdStudent" fetch="select">
+            <column name="STUDENT_ID" />
+        </many-to-one>
+        <property name="phoneTitle" type="string">
+            <column name="PHONE_TITLE" length="50" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="PHONE_NUMBER" length="50" />
+        </property>
+        <property name="creationDate" type="date">
+            <column name="CREATION_DATE" length="10" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="CREATED_BY" length="50" />
+        </property>
+        <property name="lastModifiedDate" type="date">
+            <column name="LAST_MODIFIED_DATE" length="10" />
+        </property>
+        <property name="lastModifiedBy" type="string">
+            <column name="LAST_MODIFIED_BY" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

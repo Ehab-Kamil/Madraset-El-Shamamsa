@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="madraset-el-shmamsa"/>
+  <table-filter match-name="place"/>
+  <table-filter match-name="usr_subscriber"/>
+  <table-filter match-name="set_sequencers"/>
+  <table-filter match-name="sysdiagrams"/>
+  <table-filter match-name="usr_role"/>
+  <table-filter match-name="set_roles_notification"/>
+  <table-filter match-name="student_lesson_attendence"/>
+  <table-filter match-name="std_student"/>
+  <table-filter match-name="class"/>
+  <table-filter match-name="lesson_content"/>
+  <table-filter match-name="set_notifications"/>
+  <table-filter match-name="teacher"/>
+  <table-filter match-name="educational_state"/>
+  <table-filter match-name="year"/>
+  <table-filter match-name="usr_subscriber_role"/>
+  <table-filter match-name="std_phone"/>
+  <table-filter match-name="lesson"/>
+  <table-filter match-name="level"/>
+  <table-filter match-name="content"/>
+  <table-filter match-name="term"/>
+</hibernate-reverse-engineering>

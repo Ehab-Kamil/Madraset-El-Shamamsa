@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <script src="js/index.js"></script>
+        <meta charset="UTF-8"/>
+        <title>Login form using HTML5 and CSS3</title>
+        <h:outputStylesheet name="css/style.css" />
+
+    </h:head>
+    <h:body>
+        <f:view >
+
+            <div class="container">
+                <section id="content">
+                    <h:form id="loginForm" >
+                        <h1>Login Form</h1>
+                        <div>
+                            <h:inputText value="#{student.username}" id="username"/>
+                        </div>
+                        <div>
+                            <h:inputText value="#{student.password}" id="password" />
+                        </div>
+                        <h:message for="password" />
+                        <div>
+                            <h:commandButton value="Login" type="submit" action="#{student.checkAvailable()}"/>
+                            <a href="#">Lost your password?</a>
+                            <a href="#">Register</a>
+                        </div>
+                    </h:form>
+                </section>
+            </div>
+        </f:view>
+    </h:body>
+</html>
+

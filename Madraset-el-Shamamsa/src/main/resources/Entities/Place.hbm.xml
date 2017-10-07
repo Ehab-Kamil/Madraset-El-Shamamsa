@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 29, 2017 12:28:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entities.Place" table="PLACE" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+        <id name="placeId" type="long">
+            <column name="PLACE_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="code" type="string">
+            <column name="CODE" length="50" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" length="50" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" length="50" />
+        </property>
+        <property name="creationDate" type="date">
+            <column name="CREATION_DATE" length="10" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="CREATED_BY" length="50" />
+        </property>
+        <property name="lastModificationDate" type="date">
+            <column name="LAST_MODIFICATION_DATE" length="10" />
+        </property>
+        <property name="lastModifiedBy" type="string">
+            <column name="LAST_MODIFIED_BY" length="50" />
+        </property>
+        <set name="lessonContents" table="LESSON_CONTENT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PLACE_ID" />
+            </key>
+            <one-to-many class="Entities.LessonContent" />
+        </set>
+    </class>
+</hibernate-mapping>
