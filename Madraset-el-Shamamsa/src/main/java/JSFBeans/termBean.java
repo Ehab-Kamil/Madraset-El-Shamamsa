@@ -22,11 +22,10 @@ import screenObject.TermSO;
 public class termBean {
 
     private TermSO newTermSO;
-    private List<ScreenObject> terms;
+    private List<TermSO> terms;
 
     public termBean() {
         newTermSO = new TermSO();
-
         TermManager termManager = new TermManager();
         terms = termManager.findAll(Term.class);
     }
@@ -45,11 +44,11 @@ public class termBean {
         this.newTermSO = newTermSO;
     }
 
-    public List<ScreenObject> getTerms() {
+    public List<TermSO> getTerms() {
         return terms;
     }
 
-    public void setTerms(List<ScreenObject> terms) {
+    public void setTerms(List<TermSO> terms) {
         this.terms = terms;
     }
 

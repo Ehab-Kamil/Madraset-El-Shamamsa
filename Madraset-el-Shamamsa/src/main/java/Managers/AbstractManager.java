@@ -43,12 +43,19 @@ public abstract class AbstractManager<T extends AbstractEntity, H extends Screen
         }
     }
 
-    public List<ScreenObject> findAll(Class clazz) {
+    public H findByCode(String code) {
+
+        AbstractEntity entity = getEntityDao().findByCode(code);
+
+        return (H) getTransformer().fromEntityToScreen(entity);
+    }
+
+    public List<H> findAll(Class clazz) {
 
         List<AbstractEntity> entities = getEntityDao().findAll(clazz);
-        List<ScreenObject> SOs = new ArrayList<ScreenObject>();
+        List<H> SOs = new ArrayList<H>();
         for (AbstractEntity entity : entities) {
-            SOs.add(getTransformer().fromEntityToScreen(entity));
+            SOs.add((H) getTransformer().fromEntityToScreen(entity));
         }
 
         return SOs;

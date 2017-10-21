@@ -26,7 +26,7 @@ public class levelBean {
 
     private LevelScreenObject newLevelSO;
     private YearSO newYearSO;
-    private List<ScreenObject> levels;
+    private List<LevelScreenObject> levels;
     private List<TermSO> terms;
     private List<YearSO> years;
 
@@ -55,11 +55,11 @@ public class levelBean {
         this.newYearSO = newYearSO;
     }
 
-    public List<ScreenObject> getLevels() {
+    public List<LevelScreenObject> getLevels() {
         return levels;
     }
 
-    public void setLevels(List<ScreenObject> levels) {
+    public void setLevels(List<LevelScreenObject> levels) {
         this.levels = levels;
     }
 
