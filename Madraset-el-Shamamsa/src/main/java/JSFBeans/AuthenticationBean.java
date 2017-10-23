@@ -5,17 +5,17 @@
  */
 package JSFBeans;
 
-import DAO.StudentDAO;
-import Entities.StdStudent;
+import Managers.UserManager;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import screenObject.UserSO;
 
 /**
  *
  * @author Ehab
  */
-@ManagedBean(name = "student")
+@ManagedBean(name = "user")
 public class AuthenticationBean {
 
     private String username = "Hello Ehab";
@@ -48,25 +48,31 @@ public class AuthenticationBean {
      * @return
      */
     public String checkAvailable() {
-        StudentDAO dao = new StudentDAO();
-        String resultScreen = "/home.xhtml";
+        UserManager userManager = new UserManager();
+        String resultScreen = "/addLevel.xhtml";
         try {
-            StdStudent std = dao.findByCode(username);
-//            if (!std.getPassword().equals(password)) {
+            UserSO user = userManager.findByCode(username);
+            if (user == null) {
                 FacesContext.getCurrentInstance().addMessage(
                         "loginForm:password",
                         new FacesMessage(FacesMessage.SEVERITY_WARN,
-                                "Incorrect Username and Passowrd",
-                                "Please enter correct username and Password"));
-                resultScreen = "/LoginScreen.xhtml";
-//            }
+                                "Invalid Username",
+                                "Please enter a valid username"));
+            } else if (!user.getPassword().equals(password)) {
+                FacesContext.getCurrentInstance().addMessage(
+                        "loginForm:password",
+                        new FacesMessage(FacesMessage.SEVERITY_WARN,
+                                "Incorrect Username or Passowrd",
+                                "Incorrect Password"));
+                resultScreen = "/login-screen.xhtml";
+            }
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(
                     "loginForm:password",
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
                             "Incorrect Username and Passowrd",
                             "Please enter correct username and Password"));
-            resultScreen = "/LoginScreen.xhtml";
+            resultScreen = "/login-screen.xhtml";
         }
 
         return resultScreen;

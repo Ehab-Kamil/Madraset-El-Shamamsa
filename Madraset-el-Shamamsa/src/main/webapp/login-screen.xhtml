@@ -7,33 +7,37 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta charset="utf-8"/>
-        <title>Bootflat-Admin Template</title>
+        <title>#{constants.Application_title}</title>
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
         <link rel="shortcut icon" href="favicon_16.ico"/>
         <link rel="bookmark" href="favicon_16.ico"/>
         <!-- site css -->
-        <h:outputStylesheet name="dist/css/site.min.css"/>
+        <h:outputStylesheet name="css/site.min.css"/>
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css"/>
-        <h:outputScript name="dist/js/site.min.js"/>
+        <h:outputScript name="js/site.min.js"/>
         <style>
             body {
                 padding-top: 40px;
                 padding-bottom: 40px;
                 background-color: #303641;
-                color: #C1C3C6
+                color: #C1C3C6;
+                background-image: url("#{resource['img/school-logo.png']}");
             }
         </style>
     </h:head>
-    <h:body>
+    <h:body >
+<!--        <div class="container">
+            <h:graphicImage height="100px" width="100px" library="images" name="logo.png"/>
+        </div>-->
         <div class="container">
-            <h:form class="form-signin" role="form" action="index.html">
-                <h3 class="form-signin-heading">Please sign in</h3>
+            <h:form id="loginForm"  class="form-signin" role="form" >
+                <h3 class="form-signin-heading">#{constants.sign_in_title}</h3>
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
                         </div>
-                        <h:inputText class="form-control" id="username" value="#{student.username}" autocomplete="off" />
+                        <h:inputText class="form-control" id="username" value="#{user.username}" autocomplete="off" />
                     </div>
                 </div>
 
@@ -42,15 +46,16 @@
                         <div class="input-group-addon">
                             <i class=" glyphicon glyphicon-lock "></i>
                         </div>
-                        <h:inputText  class="form-control"  id="password" value="#{student.password}" autocomplete="off" />
+                        <h:inputText  class="form-control"  id="password" value="#{user.password}" autocomplete="off" />
                     </div>
                     <h:message for="password" />
                 </div>
 
                 <label class="checkbox">
-                    <input type="checkbox" value="remember-me"> &nbsp; Remember me</input>
+                    <input type="checkbox" value="remember-me"> &nbsp; #{constants.remember_me}</input>
                 </label>
-                <h:commandButton  value="Sign In" type="submit" action="#{student.checkAvailable()}" class="btn btn-lg btn-primary btn-block" />
+                <h:commandButton  value="#{constants.sign_in_button}"  action="#{user.checkAvailable()}" class="btn btn-lg btn-primary btn-block" />
+
             </h:form>
 
         </div>
@@ -61,8 +66,8 @@
         <div class="site-footer login-footer">
             <div class="container">
                 <div class="copyright clearfix text-center">
-                    <p><b>Bootflat</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="getting-started.html">Getting Started</a>&nbsp;&bull;&nbsp;<a href="index.html">Documentation</a>&nbsp;&bull;&nbsp;<a href="https://github.com/Bootflat/Bootflat.UI.Kit.PSD/archive/master.zip">Free PSD</a>&nbsp;&bull;&nbsp;<a href="colors.html">Color Picker</a></p>
-                    <p>Code licensed under <a href="http://opensource.org/licenses/mit-license.html" target="_blank" rel="external nofollow">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/" rel="external nofollow">CC BY 3.0</a>.</p>
+                    <p><b>مدرسة الشمامسه</b></p>
+                    <p>تحت  الأنشاء........</p>
                 </div>
             </div>
         </div>

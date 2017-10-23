@@ -8,9 +8,8 @@ package JSFBeans;
 import Managers.YearManager;
 import Entities.Year;
 import java.util.List;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import screenObject.ScreenObject;
+import javax.faces.bean.RequestScoped;
 import screenObject.YearSO;
 
 /**
@@ -18,17 +17,17 @@ import screenObject.YearSO;
  * @author Ehab
  */
 @ManagedBean(name = "yearBean")
-@ApplicationScoped
+@RequestScoped
 public class YearBean {
 
     private YearSO year;
-    private List<ScreenObject> years;
+    private List<YearSO> years;
 
     public YearBean() {
         year = new YearSO();
 
         YearManager yearManager = new YearManager();
-        years = yearManager.findAll(Year.class);
+        years =(List<YearSO>) yearManager.findAll(Year.class);
     }
 
     public void addYear() {
@@ -45,11 +44,11 @@ public class YearBean {
         this.year = year;
     }
 
-    public List<ScreenObject> getYears() {
+    public List<YearSO> getYears() {
         return years;
     }
 
-    public void setYears(List<ScreenObject> years) {
+    public void setYears(List<YearSO> years) {
         this.years = years;
     }
 
