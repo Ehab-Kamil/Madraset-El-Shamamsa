@@ -3,52 +3,59 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Entities.Content" table="CONTENT" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
-        <id name="contentId" type="long">
-            <column name="CONTENT_ID" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="content" class="Entities.Content" fetch="select">
-            <column name="PARENT_CONTENT_ID" />
-        </many-to-one>
-        <property name="code" type="serializable">
-            <column name="CODE" />
-        </property>
-        <property name="name" type="serializable">
-            <column name="NAME" />
-        </property>
-        <property name="type" type="java.lang.Integer">
-            <column name="TYPE" />
-        </property>
-        <property name="durationInHours" type="java.lang.Integer">
-            <column name="DURATION_IN_HOURS" />
-        </property>
-        <property name="isParent" type="java.lang.Boolean">
-            <column name="IS_PARENT" />
-        </property>
-        <property name="lastModifiedBy" type="string">
-            <column name="LAST_MODIFIED_BY" length="50" />
-        </property>
-        <property name="creationDate" type="date">
-            <column name="CREATION_DATE" length="10" />
-        </property>
-        <property name="createdBy" type="string">
-            <column name="CREATED_BY" length="50" />
-        </property>
-        <property name="lastModifiedDate" type="date">
-            <column name="LAST_MODIFIED_DATE" length="10" />
-        </property>
-        <set name="contents" table="CONTENT" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="PARENT_CONTENT_ID" />
-            </key>
-            <one-to-many class="Entities.Content" />
-        </set>
-        <set name="lessonContents" table="LESSON_CONTENT" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="CONTENT_ID" />
-            </key>
-            <one-to-many class="Entities.LessonContent" />
-        </set>
-    </class>
+	<class name="Entities.Content" table="CONTENT" schema="dbo"
+		catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+		<id name="contentId" type="long">
+			<column name="CONTENT_ID" />
+			<generator class="increment" />
+		</id>
+		<many-to-one name="content" class="Entities.Content"
+			fetch="select">
+			<column name="PARENT_CONTENT_ID" />
+		</many-to-one>
+		<property name="code" type="string">
+			<column name="CODE" />
+		</property>
+		<property name="name" type="string">
+			<column name="NAME" />
+		</property>
+
+		<property name="type" column="TYPE">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">Enums.ContentType</param>
+			</type>
+		</property>
+
+		<property name="durationInHours" type="java.lang.Integer">
+			<column name="DURATION_IN_HOURS" />
+		</property>
+		<property name="isParent" type="java.lang.Boolean">
+			<column name="IS_PARENT" />
+		</property>
+		<property name="audioFilePath" type="string">
+			<column name="AUDIO_FILE_PATH" />
+		</property>
+		<property name="pdfFilePath" type="string">
+			<column name="PDF_FILE_PATH" />
+		</property>
+		<property name="lastModifiedBy" type="string">
+			<column name="LAST_MODIFIED_BY" length="50" />
+		</property>
+		<property name="creationDate" type="date">
+			<column name="CREATION_DATE" length="10" />
+		</property>
+		<property name="createdBy" type="string">
+			<column name="CREATED_BY" length="50" />
+		</property>
+		<property name="lastModifiedDate" type="date">
+			<column name="LAST_MODIFIED_DATE" length="10" />
+		</property>
+		<set name="contents" table="CONTENT" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="PARENT_CONTENT_ID" />
+			</key>
+			<one-to-many class="Entities.Content" />
+		</set>
+	</class>
 </hibernate-mapping>

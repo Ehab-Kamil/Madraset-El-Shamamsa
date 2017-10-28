@@ -5,11 +5,12 @@
  */
 package JSFBeans;
 
-import Managers.YearManager;
-import Entities.Year;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+
+import Managers.YearManager;
 import screenObject.YearSO;
 
 /**
@@ -27,7 +28,7 @@ public class YearBean {
         year = new YearSO();
 
         YearManager yearManager = new YearManager();
-        years =(List<YearSO>) yearManager.findAll(Year.class);
+        years =(List<YearSO>) yearManager.findAll();
     }
 
     public void addYear() {

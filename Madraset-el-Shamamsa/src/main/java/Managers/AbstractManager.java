@@ -18,72 +18,81 @@ import screenObject.ScreenObject;
  */
 public abstract class AbstractManager<T extends AbstractEntity, H extends ScreenObject> {
 
-    private AbstractDao entityDao;
-    private AbstractTransformer transformer;
+	private AbstractDao entityDao;
+	private AbstractTransformer transformer;
 
-    public AbstractManager(AbstractDao dao, AbstractTransformer transformer) {
-        this.setEntityDao(dao);
-        this.setTransformer(transformer);
-    }
+	public AbstractManager(AbstractDao dao, AbstractTransformer transformer) {
+		this.setEntityDao(dao);
+		this.setTransformer(transformer);
+	}
 
-    public void create(H h) {
+	public void create(H h) {
 
-        try {
+		try {
 
-            doBeforeTransformEntity();
+			doBeforeTransformEntity();
 
-            AbstractEntity entity = getTransformer().fromScreenToEntity(h);
+			AbstractEntity entity = getTransformer().fromScreenToEntity(h);
 
-            doBeforeSaveEntity();
+			doBeforeSaveEntity();
 
-            getEntityDao().create(entity);
+			getEntityDao().create(entity);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-    public H findByCode(String code) {
+	public H findByCode(String code) {
 
-        AbstractEntity entity = getEntityDao().findByCode(code);
+		AbstractEntity entity = getEntityDao().findByCode(code);
 
-        return (H) getTransformer().fromEntityToScreen(entity);
-    }
+		return (H) getTransformer().fromEntityToScreen(entity);
+	}
 
-    public List<H> findAll(Class clazz) {
+	public List<H> findAll() {
 
-        List<AbstractEntity> entities = getEntityDao().findAll(clazz);
-        List<H> SOs = new ArrayList<H>();
-        for (AbstractEntity entity : entities) {
-            SOs.add((H) getTransformer().fromEntityToScreen(entity));
-        }
+		T t;
+		List<H> SOs = new ArrayList<H>();
 
-        return SOs;
+		try {
+			t = (T) getEntityDao().getEntityClass().newInstance();
 
-    }
+			List<AbstractEntity> entities = getEntityDao().findAll(t.getClass());
+			for (AbstractEntity entity : entities) {
+				SOs.add((H) getTransformer().fromEntityToScreen(entity));
+			}
 
-    public AbstractDao getEntityDao() {
-        return entityDao;
-    }
+		} catch (Exception e) { // TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-    public void setEntityDao(AbstractDao entityDao) {
-        this.entityDao = entityDao;
-    }
+		return SOs;
 
-    public AbstractTransformer getTransformer() {
-        return transformer;
-    }
+	}
 
-    public void setTransformer(AbstractTransformer transformer) {
-        this.transformer = transformer;
-    }
+	public AbstractDao getEntityDao() {
+		return entityDao;
+	}
 
-    protected void doBeforeSaveEntity() {
-        //do Nothing
-    }
+	public void setEntityDao(AbstractDao entityDao) {
+		this.entityDao = entityDao;
+	}
 
-    protected void doBeforeTransformEntity() {
-        //do Nothing
-    }
+	public AbstractTransformer getTransformer() {
+		return transformer;
+	}
+
+	public void setTransformer(AbstractTransformer transformer) {
+		this.transformer = transformer;
+	}
+
+	protected void doBeforeSaveEntity() {
+		// do Nothing
+	}
+
+	protected void doBeforeTransformEntity() {
+		// do Nothing
+	}
 
 }

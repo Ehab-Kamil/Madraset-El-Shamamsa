@@ -5,6 +5,7 @@
  */
 package Transformers;
 
+import DAO.ContentDAO;
 import Entities.Content;
 import screenObject.ContentSO;
 
@@ -12,16 +13,32 @@ import screenObject.ContentSO;
  *
  * @author Ehab
  */
-public class ContentTransformer extends AbstractTransformer<Content,ContentSO>{
+public class ContentTransformer extends AbstractTransformer<Content, ContentSO> {
 
-    @Override
-    public ContentSO fromEntityToScreen(Content entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public ContentSO fromEntityToScreen(Content entity) {
+		ContentSO content = new ContentSO();
+		content.setContentCode(entity.getCode());
+		content.setContentName(entity.getName());
+		return content;
+	}
 
-    @Override
-    public Content fromScreenToEntity(ContentSO screenObject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+	@Override
+	public Content fromScreenToEntity(ContentSO screenObject) {
+		Content content = new Content();
+		content.setCode(screenObject.getContentCode());
+		content.setName(screenObject.getContentName());
+		content.setDurationInHours(screenObject.getDurationInHours());
+		content.setType(screenObject.getSelectedType());
+		content.setIsParent(screenObject.isParent());
+
+		if (screenObject.getParentContentCode() != null) {
+			ContentDAO contentDAO = new ContentDAO();
+			content.setContent(contentDAO.findByCode(screenObject.getParentContentCode()));
+		}
+		
+		return content;
+
+	}
+
 }

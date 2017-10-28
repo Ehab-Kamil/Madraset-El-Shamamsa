@@ -5,6 +5,8 @@
  */
 package Managers;
 
+import java.util.List;
+
 import DAO.ContentDAO;
 import Entities.Content;
 import Transformers.ContentTransformer;
@@ -16,8 +18,12 @@ import screenObject.ContentSO;
  */
 public class ContentManager extends AbstractManager<Content, ContentSO> {
 
-    public ContentManager() {
-        super(new ContentDAO(), new ContentTransformer());
-    }
+	public ContentManager() {
+		super(new ContentDAO(), new ContentTransformer());
+	}
+
+	public List<ContentSO> getAllParents() {
+		return ((ContentDAO) getEntityDao()).findAllParents();
+	}
 
 }

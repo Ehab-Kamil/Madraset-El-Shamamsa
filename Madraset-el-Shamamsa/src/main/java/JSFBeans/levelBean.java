@@ -5,14 +5,14 @@
  */
 package JSFBeans;
 
-import Managers.LevelManager;
-import Managers.YearManager;
-import Entities.Level;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+
+import Managers.LevelManager;
+import Managers.YearManager;
 import screenObject.LevelScreenObject;
-import screenObject.ScreenObject;
 import screenObject.TermSO;
 import screenObject.YearSO;
 
@@ -35,7 +35,7 @@ public class levelBean {
         newYearSO = new YearSO();
 
         LevelManager levelManager = new LevelManager();
-        levels = levelManager.findAll(Level.class);
+        levels = levelManager.findAll();
 
     }
 

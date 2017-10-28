@@ -1,76 +1,82 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <meta charset="utf-8"/>
-        <title>#{constants.Application_title}</title>
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
-        <link rel="shortcut icon" href="favicon_16.ico"/>
-        <link rel="bookmark" href="favicon_16.ico"/>
-        <!-- site css -->
-        <h:outputStylesheet name="css/site.min.css"/>
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css"/>
-        <h:outputScript name="js/site.min.js"/>
-        <style>
-            body {
-                padding-top: 40px;
-                padding-bottom: 40px;
-                background-color: #303641;
-                color: #C1C3C6;
-                background-image: url("#{resource['img/school-logo.png']}");
-            }
-        </style>
-    </h:head>
-    <h:body >
-<!--        <div class="container">
-            <h:graphicImage height="100px" width="100px" library="images" name="logo.png"/>
-        </div>-->
-        <div class="container">
-            <h:form id="loginForm"  class="form-signin" role="form" >
-                <h3 class="form-signin-heading">#{constants.sign_in_title}</h3>
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="glyphicon glyphicon-user"></i>
-                        </div>
-                        <h:inputText class="form-control" id="username" value="#{user.username}" autocomplete="off" />
-                    </div>
-                </div>
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" />
+	<title>#{constants.Application_title}</title>
+	<meta name="viewport"
+		content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<link rel="shortcut icon" href="favicon_16.ico" />
+	<link rel="bookmark" href="favicon_16.ico" />
+	<!-- site css -->
+	<h:outputStylesheet name="css/site.min.css" />
+	<link
+		href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic"
+		rel="stylesheet" type="text/css" />
+	<h:outputScript name="js/site.min.js" />
+	<style>
+body {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background-color: #303641;
+	color: #C1C3C6;
+	background-image: url("#{resource['img/school-logo.png']}");
+}
+</style>
+</h:head>
+<h:body>
+	<div class="container">
+		<h:form id="loginForm" class="form-signin" role="form">
+			<h3 class="form-signin-heading">#{constants.sign_in_title}</h3>
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="glyphicon glyphicon-user"></i>
+					</div>
+					<h:inputText class="form-control" id="username"
+						value="#{user.username}" autocomplete="off" />
+				</div>
+			</div>
 
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class=" glyphicon glyphicon-lock "></i>
-                        </div>
-                        <h:inputText  class="form-control"  id="password" value="#{user.password}" autocomplete="off" />
-                    </div>
-                    <h:message for="password" />
-                </div>
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class=" glyphicon glyphicon-lock "></i>
+					</div>
+					<h:inputText class="form-control" id="password"
+						value="#{user.password}" autocomplete="off" />
+				</div>
+				<h:message for="password" styleClass="AFComponentMessageCell" />
+			</div>
 
-                <label class="checkbox">
-                    <input type="checkbox" value="remember-me"> &nbsp; #{constants.remember_me}</input>
-                </label>
-                <h:commandButton  value="#{constants.sign_in_button}"  action="#{user.checkAvailable()}" class="btn btn-lg btn-primary btn-block" />
+			<label class="checkbox"> <input type="checkbox"
+				value="remember-me"> &nbsp; #{constants.remember_me}</input>
+			</label>
+			<h:commandButton value="#{constants.sign_in_button}"
+				action="#{user.checkAvailable()}"
+				class="btn btn-lg btn-primary btn-block" />
 
-            </h:form>
+		</h:form>
 
-        </div>
-        <div class="clearfix"></div>
-        <br/>
-        <br/>
-        <!--footer-->
-        <div class="site-footer login-footer">
-            <div class="container">
-                <div class="copyright clearfix text-center">
-                    <p><b>مدرسة الشمامسه</b></p>
-                    <p>تحت  الأنشاء........</p>
-                </div>
-            </div>
-        </div>
-    </h:body>
+	</div>
+	<div class="clearfix"></div>
+	<br />
+	<br />
+	<!--footer-->
+	<div class="site-footer login-footer">
+		<div class="container">
+			<div class="copyright clearfix text-center">
+				<p>
+					<b>مدرسة الشمامسه</b>
+				</p>
+				<p>تحت الأنشاء........</p>
+			</div>
+		</div>
+	</div>
+</h:body>
 </html>
 

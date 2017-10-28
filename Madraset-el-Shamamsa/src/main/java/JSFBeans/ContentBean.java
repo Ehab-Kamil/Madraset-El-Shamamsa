@@ -5,42 +5,54 @@
  */
 package JSFBeans;
 
-import Managers.ContentManager;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+
+import Managers.ContentManager;
 import screenObject.ContentSO;
-import screenObject.ScreenObject;
 
 /**
  *
  * @author Ehab
  */
 @ManagedBean(name = "contentBean")
+@ApplicationScoped
 public class ContentBean {
 
-    private ContentSO contentSO;
-    private List<ScreenObject> contents;
+	private ContentSO contentSO;
+	private List<ContentSO> contents;
+	private ContentManager contentManager;
 
-    public ContentSO getContentSO() {
-        return contentSO;
-    }
+	@PostConstruct
+	private void init() {
+		contentSO = new ContentSO();
+		contentManager = new ContentManager();
+		contents = contentManager.getAllParents();
+	}
 
-    public void setContentSO(ContentSO contentSO) {
-        this.contentSO = contentSO;
-    }
+	public ContentSO getContentSO() {
+		return contentSO;
+	}
 
-    public List<ScreenObject> getContents() {
-        return contents;
-    }
+	public void setContentSO(ContentSO contentSO) {
+		this.contentSO = contentSO;
+	}
 
-    public void setContents(List<ScreenObject> contents) {
-        this.contents = contents;
-    }
+	public List<ContentSO> getContents() {
+		return contents;
+	}
 
-    public void addContent() {
-        ContentManager contentManager = new ContentManager();
-        contentManager.create(contentSO);
-        contentSO = new ContentSO();
-    }
+	public void setContents(List<ContentSO> contents) {
+		this.contents = contents;
+	}
+
+	public void addContent() {
+		contentManager.create(contentSO);
+		contents.add(contentSO);
+		contentSO = new ContentSO();
+	}
 
 }

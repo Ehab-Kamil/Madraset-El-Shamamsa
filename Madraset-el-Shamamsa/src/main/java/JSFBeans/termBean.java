@@ -5,12 +5,12 @@
  */
 package JSFBeans;
 
-import Managers.TermManager;
-import Entities.Term;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import screenObject.ScreenObject;
+
+import Managers.TermManager;
 import screenObject.TermSO;
 
 /**
@@ -27,7 +27,7 @@ public class termBean {
     public termBean() {
         newTermSO = new TermSO();
         TermManager termManager = new TermManager();
-        terms = termManager.findAll(Term.class);
+        terms = termManager.findAll();
     }
 
     public void addNewTerm() {

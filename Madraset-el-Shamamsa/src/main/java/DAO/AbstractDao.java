@@ -5,14 +5,16 @@
  */
 package DAO;
 
-import Entities.AbstractEntity;
-import Exceptions.DataAccessLayerException;
 import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+
+import Entities.AbstractEntity;
+import Exceptions.DataAccessLayerException;
 
 /**
  *
@@ -32,7 +34,7 @@ public abstract class AbstractDao<T extends AbstractEntity> {
     public void create(T t) {
         try {
             startOperation();
-            session.saveOrUpdate(t);
+            session.save(t);
             tx.commit();
         } catch (HibernateException e) {
             handleException(e);
@@ -118,6 +120,10 @@ public abstract class AbstractDao<T extends AbstractEntity> {
             HibernateFactory.close(session);
         }
         return objects;
+    }
+    
+    public Class<T> getEntityClass(){
+    	return cls;
     }
 
     protected void handleException(HibernateException e) throws DataAccessLayerException {
