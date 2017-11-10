@@ -5,8 +5,6 @@
  */
 package screenObject;
 
-import Entities.StdStudent;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**

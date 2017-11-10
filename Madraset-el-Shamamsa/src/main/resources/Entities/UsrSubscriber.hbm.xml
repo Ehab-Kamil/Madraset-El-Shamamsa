@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Entities.UsrSubscriber" table="USR_SUBSCRIBER" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+    <class name="Entities.UsrSubscriber" table="USR_SUBSCRIBER" schema="dbo" catalog="Madraset_El_Shmamsa_Test" optimistic-lock="version">
         <id name="subscriberId" type="long">
             <column name="SUBSCRIBER_ID" />
             <generator class="assigned" />
@@ -11,8 +11,8 @@
         <many-to-one name="stdStudent" class="Entities.StdStudent" fetch="select">
             <column name="DEFAULT_STUDENT_ID" />
         </many-to-one>
-        <property name="code" type="string">
-            <column name="CODE" length="50" />
+        <property name="code" type="string" >
+            <column name="CODE" length="50" unique="true" not-null="true"/>
         </property>
         <property name="name" type="string">
             <column name="NAME" length="50" />

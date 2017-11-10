@@ -3,64 +3,50 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Entities.LessonContent" table="LESSON_CONTENT" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
-        <id name="lessonContentId" type="long">
-            <column name="LESSON_CONTENT_ID" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="content" class="Entities.Content" fetch="select">
-            <column name="CONTENT_ID" />
-        </many-to-one>
-        <many-to-one name="educationalState" class="Entities.EducationalState" fetch="select">
-            <column name="EDUCATIONAL_STATE_ID" />
-        </many-to-one>
-        <many-to-one name="lesson" class="Entities.Lesson" fetch="select">
-            <column name="LESSON_ID" />
-        </many-to-one>
-        <many-to-one name="place" class="Entities.Place" fetch="select">
-            <column name="PLACE_ID" />
-        </many-to-one>
-        <property name="code" type="serializable">
-            <column name="CODE" />
-        </property>
-        <property name="startDate" type="timestamp">
-            <column name="START_DATE" length="23" />
-        </property>
-        <property name="endDate" type="timestamp">
-            <column name="END_DATE" length="23" />
-        </property>
-        <property name="teacherId" type="java.lang.Long">
-            <column name="TEACHER_ID" />
-        </property>
-        <property name="lastModifiedBy" type="string">
-            <column name="LAST_MODIFIED_BY" length="50" />
-        </property>
-        <property name="creationDate" type="date">
-            <column name="CREATION_DATE" length="10" />
-        </property>
-        <property name="createdBy" type="string">
-            <column name="CREATED_BY" length="50" />
-        </property>
-        <property name="lastModifiedDate" type="date">
-            <column name="LAST_MODIFIED_DATE" length="10" />
-        </property>
-        <set name="classes" table="CLASS" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="LESSON_CONTENT_ID" />
-            </key>
-            <one-to-many class="Entities.Class" />
-        </set>
-        <set name="teacherLessonContents" table="TEACHER_LESSON_CONTENT" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="LESSON_CONTENT_ID" />
-            </key>
-            <one-to-many class="Entities.TeacherLessonContent" />
-        </set>
-        <set name="studentLessonAttendences" table="STUDENT_LESSON_ATTENDENCE" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="LESSON_CONTENT_ID" not-null="true" />
-            </key>
-            <one-to-many class="Entities.StudentLessonAttendence" />
-        </set>
-    </class>
+	<class name="Entities.LessonContent" table="LESSON_CONTENT"
+		schema="dbo" catalog="Madraset_El_Shmamsa_Test" optimistic-lock="version">
+		<id name="lessonContentId" type="long">
+			<column name="LESSON_CONTENT_ID" />
+			<generator class="increment" />
+		</id>
+		<many-to-one name="content" class="Entities.Content"
+			fetch="select">
+			<column name="CONTENT_ID" />
+		</many-to-one>
+		<many-to-one name="educationalState" class="Entities.EducationalState"
+			fetch="select">
+			<column name="EDUCATIONAL_STATE_ID" />
+		</many-to-one>
+		<many-to-one name="lesson" class="Entities.Lesson" fetch="select">
+			<column name="LESSON_ID" />
+		</many-to-one>
+		<many-to-one name="place" class="Entities.Place" fetch="select">
+			<column name="PLACE_ID" />
+		</many-to-one>
+		<many-to-one name="teacher" class="Entities.Teacher"
+			fetch="select">
+			<column name="TEACHER_ID" />
+		</many-to-one>
+		<property name="code" type="string" >
+			<column name="CODE" unique="true" not-null="true"/>
+		</property>
+		<property name="startDate" type="timestamp">
+			<column name="START_DATE" length="23" />
+		</property>
+		<property name="endDate" type="timestamp">
+			<column name="END_DATE" length="23" />
+		</property>
+		<property name="lastModifiedBy" type="string">
+			<column name="LAST_MODIFIED_BY" length="50" />
+		</property>
+		<property name="creationDate" type="date">
+			<column name="CREATION_DATE" length="10" />
+		</property>
+		<property name="createdBy" type="string">
+			<column name="CREATED_BY" length="50" />
+		</property>
+		<property name="lastModifiedDate" type="date">
+			<column name="LAST_MODIFIED_DATE" length="10" />
+		</property>
+	</class>
 </hibernate-mapping>

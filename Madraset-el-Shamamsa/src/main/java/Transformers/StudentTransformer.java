@@ -16,24 +16,31 @@ import screenObject.StudentScreenObject;
  */
 public class StudentTransformer extends AbstractTransformer<StdStudent, StudentScreenObject> {
 
-    @Override
-    public StudentScreenObject fromEntityToScreen(StdStudent entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public StudentScreenObject fromEntityToScreen(StdStudent entity) {
+		StudentScreenObject so = new StudentScreenObject();
+		so.setCode(entity.getCode());
+		so.setFirstName(entity.getFirstName());
+		so.setMiddleName(entity.getMiddleName());
+		so.setLastName(entity.getLastName());
 
-    @Override
-    public StdStudent fromScreenToEntity(StudentScreenObject screenObject) {
-        StdStudent entity = new StdStudent();
-        entity.setCode(screenObject.getCode());
-        entity.setFirstName(screenObject.getFirstName());
-        entity.setMiddleName(screenObject.getMiddleName());
+		return so;
 
-        TermDAO termDao = new TermDAO();
-        Term term = termDao.findByCode(screenObject.getTermCode());
+	}
 
-        entity.setTerm(term);
+	@Override
+	public StdStudent fromScreenToEntity(StudentScreenObject screenObject) {
+		StdStudent entity = new StdStudent();
+		entity.setCode(screenObject.getCode());
+		entity.setFirstName(screenObject.getFirstName());
+		entity.setMiddleName(screenObject.getMiddleName());
 
-        return entity;
-    }
+		TermDAO termDao = new TermDAO();
+		Term term = termDao.findByCode(screenObject.getTermCode());
+
+		entity.setTerm(term);
+
+		return entity;
+	}
 
 }

@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/madraset_el_shmamsa?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.show_sql">true</property>
-    <mapping resource="Entities/Teacher.hbm.xml"/>
-    <mapping resource="Entities/SetSequencers.hbm.xml"/>
-    <mapping resource="Entities/LessonContent.hbm.xml"/>
-    <mapping resource="Entities/SetRolesNotification.hbm.xml"/>
-    <mapping resource="Entities/Level.hbm.xml"/>
-    <mapping resource="Entities/TeacherLessonContent.hbm.xml"/>
-    <mapping resource="Entities/UsrSubscriber.hbm.xml"/>
-    <mapping resource="Entities/StdPhone.hbm.xml"/>
-    <mapping resource="Entities/Class.hbm.xml"/>
-    <mapping resource="Entities/Content.hbm.xml"/>
-    <mapping resource="Entities/Place.hbm.xml"/>
-    <mapping resource="Entities/Year.hbm.xml"/>
-    <mapping resource="Entities/Sysdiagrams.hbm.xml"/>
-    <mapping resource="Entities/Term.hbm.xml"/>
-    <mapping resource="Entities/StudentLessonAttendence.hbm.xml"/>
-    <mapping resource="Entities/EducationalState.hbm.xml"/>
-    <mapping resource="Entities/Lesson.hbm.xml"/>
-    <mapping resource="Entities/SetNotifications.hbm.xml"/>
-    <mapping resource="Entities/UsrRole.hbm.xml"/>
-    <mapping resource="Entities/UsrSubscriberRole.hbm.xml"/>
-    <mapping resource="Entities/StdStudent.hbm.xml"/>
-  </session-factory>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/madraset_el_shmamsa_test?zeroDateTimeBehavior=convertToNull</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.show_sql">true</property>
+		<mapping resource="Entities/Teacher.hbm.xml" />
+		<mapping resource="Entities/SetSequencers.hbm.xml" />
+		<mapping resource="Entities/LessonContent.hbm.xml" />
+		<mapping resource="Entities/SetRolesNotification.hbm.xml" />
+		<mapping resource="Entities/Level.hbm.xml" />
+		<mapping resource="Entities/TeacherLessonContent.hbm.xml" />
+		<mapping resource="Entities/UsrSubscriber.hbm.xml" />
+		<mapping resource="Entities/StdPhone.hbm.xml" />
+		<mapping resource="Entities/Content.hbm.xml" />
+		<mapping resource="Entities/Place.hbm.xml" />
+		<mapping resource="Entities/Year.hbm.xml" />
+		<mapping resource="Entities/Term.hbm.xml" />
+		<mapping resource="Entities/StudentLessonAttendence.hbm.xml" />
+		<mapping resource="Entities/EducationalState.hbm.xml" />
+		<mapping resource="Entities/Lesson.hbm.xml" />
+		<mapping resource="Entities/SetNotifications.hbm.xml" />
+		<mapping resource="Entities/UsrRole.hbm.xml" />
+		<mapping resource="Entities/UsrSubscriberRole.hbm.xml" />
+		<mapping resource="Entities/StdStudent.hbm.xml" />
+	</session-factory>
 </hibernate-configuration>

@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Entities.SetRolesNotification" table="SET_ROLES_NOTIFICATION" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+    <class name="Entities.SetRolesNotification" table="SET_ROLES_NOTIFICATION" schema="dbo" catalog="Madraset_El_Shmamsa_Test" optimistic-lock="version">
         <composite-id name="id" class="Entities.SetRolesNotificationId">
             <key-property name="notificationId" type="java.lang.Long">
                 <column name="NOTIFICATION_ID" />

@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Entities.StdPhone" table="STD_PHONE" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+    <class name="Entities.StdPhone" table="STD_PHONE" schema="dbo" catalog="Madraset_El_Shmamsa_Test" optimistic-lock="version">
         <id name="phoneId" type="string">
             <column name="PHONE_ID" length="50" />
             <generator class="assigned" />
@@ -11,10 +11,10 @@
         <many-to-one name="stdStudent" class="Entities.StdStudent" fetch="select">
             <column name="STUDENT_ID" />
         </many-to-one>
-        <property name="phoneTitle" type="string">
-            <column name="PHONE_TITLE" length="50" />
+        <property name="phoneTitle" type="string" >
+            <column name="PHONE_TITLE" length="50" unique="true" not-null="true" />
         </property>
-        <property name="phoneNumber" type="string">
+        <property name="phoneNumber" type="string" unique="true">
             <column name="PHONE_NUMBER" length="50" />
         </property>
         <property name="creationDate" type="date">

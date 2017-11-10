@@ -4,7 +4,7 @@
 <!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
 	<class name="Entities.Content" table="CONTENT" schema="dbo"
-		catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+		catalog="Madraset_El_Shmamsa_Test" optimistic-lock="version">
 		<id name="contentId" type="long">
 			<column name="CONTENT_ID" />
 			<generator class="increment" />
@@ -13,8 +13,8 @@
 			fetch="select">
 			<column name="PARENT_CONTENT_ID" />
 		</many-to-one>
-		<property name="code" type="string">
-			<column name="CODE" />
+		<property name="code" type="string" >
+			<column name="CODE" unique="true" not-null="true"/>
 		</property>
 		<property name="name" type="string">
 			<column name="NAME" />
@@ -30,7 +30,7 @@
 			<column name="DURATION_IN_HOURS" />
 		</property>
 		<property name="isParent" type="java.lang.Boolean">
-			<column name="IS_PARENT" />
+			<column name="IS_PARENT"  default="0"/>
 		</property>
 		<property name="audioFilePath" type="string">
 			<column name="AUDIO_FILE_PATH" />
@@ -50,12 +50,13 @@
 		<property name="lastModifiedDate" type="date">
 			<column name="LAST_MODIFIED_DATE" length="10" />
 		</property>
-		<set name="contents" table="CONTENT" inverse="true" lazy="true"
+		<list name="contents" table="CONTENT" inverse="true" lazy="true"
 			fetch="select">
 			<key>
 				<column name="PARENT_CONTENT_ID" />
 			</key>
+			<index column="CONTENT_SEQUENCE"/>
 			<one-to-many class="Entities.Content" />
-		</set>
+		</list>
 	</class>
 </hibernate-mapping>

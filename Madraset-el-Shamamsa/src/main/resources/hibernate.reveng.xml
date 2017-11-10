@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="Madraset_El_Shmamsa"/>
+  <schema-selection match-catalog="Madraset_El_Shmamsa_TEST"/>
   <table-filter match-name="sysdiagrams"/>
   <table-filter match-name="EDUCATIONAL_STATE"/>
   <table-filter match-name="USR_SUBSCRIBER_ROLE"/>
@@ -11,7 +11,6 @@
   <table-filter match-name="LEVEL"/>
   <table-filter match-name="TERM"/>
   <table-filter match-name="SET_ROLES_NOTIFICATION"/>
-  <table-filter match-name="CLASS"/>
   <table-filter match-name="STD_PHONE"/>
   <table-filter match-name="TEACHER"/>
   <table-filter match-name="SET_SEQUENCERS"/>

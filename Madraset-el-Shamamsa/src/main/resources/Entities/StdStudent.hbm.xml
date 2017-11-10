@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Oct 5, 2017 11:18:30 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Entities.StdStudent" table="STD_STUDENT" schema="dbo" catalog="Madraset_El_Shmamsa" optimistic-lock="version">
+    <class name="Entities.StdStudent" table="STD_STUDENT" schema="dbo" catalog="Madraset_El_Shmamsa_Test" optimistic-lock="version">
         <id name="studentId" type="long">
             <column name="STUDENT_ID" />
             <generator class="increment" />
@@ -11,11 +11,11 @@
         <many-to-one name="educationalState" class="Entities.EducationalState" fetch="select">
             <column name="EDUCATIONAL_STATE_ID" />
         </many-to-one>
-        <many-to-one name="term" class="Entities.Term" fetch="select">
+        <many-to-one name="term" class="Entities.Term" fetch="select" cascade="save-update">
             <column name="TERM_ID" not-null="true" />
         </many-to-one>
-        <property name="code" type="string">
-            <column name="CODE" length="50" />
+        <property name="code" type="string" >
+            <column name="CODE" length="50" unique="true" not-null="true"/>
         </property>
         <property name="firstName" type="string">
             <column name="FIRST_NAME" length="50" />
@@ -32,7 +32,7 @@
         <property name="birthdate" type="timestamp">
             <column name="BIRTHDATE" length="23" />
         </property>
-        <property name="email" type="string">
+        <property name="email" type="string" unique="true">
             <column name="EMAIL" length="50" />
         </property>
         <property name="facebookName" type="string">

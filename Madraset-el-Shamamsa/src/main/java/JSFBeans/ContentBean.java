@@ -8,8 +8,8 @@ package JSFBeans;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import Managers.ContentManager;
 import screenObject.ContentSO;
@@ -19,7 +19,7 @@ import screenObject.ContentSO;
  * @author Ehab
  */
 @ManagedBean(name = "contentBean")
-@ApplicationScoped
+@ViewScoped
 public class ContentBean {
 
 	private ContentSO contentSO;
@@ -51,7 +51,9 @@ public class ContentBean {
 
 	public void addContent() {
 		contentManager.create(contentSO);
-		contents.add(contentSO);
+		if (contentSO.isParent()) {
+			contents.add(contentSO);
+		}
 		contentSO = new ContentSO();
 	}
 

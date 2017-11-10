@@ -25,7 +25,7 @@ public class ContentDAO extends AbstractDao<Content> {
 	public List<ContentSO> findAllParents() {
 		
 		startOperation();
-		Query query = session.createQuery("FROM Content content where  content.isParent = 'true'");
+		Query query = session.createQuery("FROM Content content where  content.isParent = 1");
 
 		return query.list();
 	}

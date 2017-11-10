@@ -2,9 +2,9 @@ package Entities;
 // Generated Oct 5, 2017 11:18:29 AM by Hibernate Tools 4.3.1
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import Enums.ContentType;
 
@@ -13,6 +13,7 @@ import Enums.ContentType;
  */
 public class Content implements AbstractEntity, Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private long contentId;
 	private Content content;
 	private String code;
@@ -26,30 +27,13 @@ public class Content implements AbstractEntity, Serializable {
 	private Date creationDate;
 	private String createdBy;
 	private Date lastModifiedDate;
-	private Set contents = new HashSet(0);
+	private List<Content> contents = new ArrayList<>();
 
 	public Content() {
 	}
 
 	public Content(long contentId) {
 		this.contentId = contentId;
-	}
-
-	public Content(long contentId, Content content, String code, String name, ContentType type, Integer durationInHours,
-			Boolean isParent, String lastModifiedBy, Date creationDate, String createdBy, Date lastModifiedDate,
-			Set contents) {
-		this.contentId = contentId;
-		this.content = content;
-		this.code = code;
-		this.name = name;
-		this.type = type;
-		this.durationInHours = durationInHours;
-		this.isParent = isParent;
-		this.lastModifiedBy = lastModifiedBy;
-		this.creationDate = creationDate;
-		this.createdBy = createdBy;
-		this.lastModifiedDate = lastModifiedDate;
-		this.contents = contents;
 	}
 
 	public long getContentId() {
@@ -140,11 +124,11 @@ public class Content implements AbstractEntity, Serializable {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 
-	public Set getContents() {
-		return this.contents;
+	public List<Content> getContents() {
+		return contents;
 	}
 
-	public void setContents(Set contents) {
+	public void setContents(List<Content> contents) {
 		this.contents = contents;
 	}
 
